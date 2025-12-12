@@ -11,11 +11,23 @@ body, html {
 }
 
 /* Header */
-header {
-  background-color: #1a1a1a;
-  color: white;
-  text-align: center;
-  padding: 15px 0;
+ header {
+    background-color: #0d3b66; /* deep blue */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 1em;
+    margin-top: 0;
+    opacity: 0.8; /* lighter subtitle text */
 }
 
 /* Container */
