@@ -49,7 +49,7 @@ const balloonBlue = createIcon("blue_balloon.png");
    INCIDENT MARKERS
 ========================= */
 
-L.marker([55.6181, 12.6508], { icon: uavRed })
+L.marker([55.6181, 12.6508], { icon: droneOrange })
   .addTo(map)
   .bindPopup(`
     <b>Location:</b> Copenhagen Airport, Denmark 🇩🇰<br>
