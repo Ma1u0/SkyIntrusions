@@ -53,7 +53,8 @@ L.marker([55.6181, 12.6508], { icon: uavRed })
   .addTo(map)
   .bindPopup(`
     <b>Location:</b> 🇩🇰 Copenhagen Airport<br>
-    <b>Date/Time:</b> 22 Sep 2025, ~20:26–00:30 <br>
+    <b>Date/Time:</b> 22 Sep 2025, ~20:26–00:30<br>
     <b>Type:</b> Drone sighting<br>
-    <b>Details:</b> Copenhagen Airport was temporarily closed after 2–3 drones were spotted. Danish authorities said that the drones were operated by a "capable actor"
+    <b>Details:</b> Copenhagen Airport was temporarily closed after 2–3 drones were spotted.<br>
+    Danish authorities stated the drones were operated by a "capable actor".
   `);
