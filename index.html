@@ -2,27 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Russian Drone Incursions Tracker</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <title>Drone Incursions Map</title>
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      #map {
+        width: 100%;
+        height: 100vh;
+      }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Russian Drone Incursions Tracker</h1>
-        <p>Interactive map of confirmed and suspected incursions in Europe</p>
-    </header>
 
-    <div id="container">
-        <aside id="sidebar">
-            <h2>Incidents</h2>
-            <p>Click a marker on the map to see details.</p>
-        </aside>
+<div id="map"></div>
 
-        <main id="map"></main>
-    </div>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
