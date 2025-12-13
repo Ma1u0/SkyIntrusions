@@ -49,4 +49,4 @@ const balloonGreen = createIcon("balloon-green.png");
 // Example marker
 L.marker([55.6761, 12.5683], { icon: uavRed })  // Coordinates for Copenhagen
     .addTo(map)                                  // Add marker to the map
-    .bindPopup("<b>Copenhagen Airport</b><br>Confirmed Russian UAV<br>22 Sep 2025"); // Popup text
+    .bindPopup("<b>Copenhagen Airport</b><br>Confirmed Russian <br>22 Sep 2025"); // Popup text
