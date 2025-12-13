@@ -6,10 +6,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
-// Add a simple test marker
-L.marker([55.6761, 12.5683])
-  .addTo(map)
-  .bindPopup("Copenhagen – Test Marker");
+/* =========================
+   ICON FACTORY
+========================= */
+function createIcon(file) {
+    return L.icon({
+        iconUrl: `icons/${file}`,
+        iconSize: [36, 36],
+        iconAnchor: [18, 36],
+        popupAnchor: [0, -30]
+    });
+}
 
 /* =========================
    UAV ICONS
