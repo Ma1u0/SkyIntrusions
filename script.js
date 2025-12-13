@@ -44,3 +44,16 @@ const balloonOrange = createIcon("orange_balloon.png");
 const balloonYellow = createIcon("yellow_balloon.png");
 const balloonGreen = createIcon("green_balloon.png");
 const balloonBlue = createIcon("blue_balloon.png");
+
+/* =========================
+   INCIDENT MARKERS
+========================= */
+
+L.marker([55.6181, 12.6508], { icon: uavRed })
+  .addTo(map)
+  .bindPopup(`
+    <b>Location:</b> Copenhagen Airport<br>
+    <b>Date/Time:</b> 22 Sep 2025<br>
+    <b>Type:</b> UAV sighting<br>
+    <b>Details:</b> Unidentified drones caused a temporary shutdown of the airport
+  `);
