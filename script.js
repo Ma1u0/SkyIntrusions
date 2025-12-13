@@ -74,12 +74,12 @@ L.marker([55.6181, 12.6508], { icon: droneOrange })
    E S T O N I A
 ========================= */
 
-L.marker([59,81732, 26,36000], { icon: jetRed })
+L.marker([59.81732, 26.36000], { icon: jetRed })
   .addTo(map)
   .bindPopup(`
     <b> Vaindloo Island 🇪🇪 </b> <br>
     <br>
-    <b>Date/Time:</b> 19 Sep 2025, entered airspace between 09:58 and 10:10
+    <b>Date/Time:</b> 19 Sep 2025, entered airspace between 09:58 and 10:10 <br>
     <b>Type:</b> Airspace incursion by Russian fighter jets <br>
     <b>Details:</b> Three Russian jets breached Estonian airspace up to 10 km deep for 12 minutes before being escorted by NATO jets <br>
     <b>Source:</b> <a href="https://www.osw.waw.pl/en/publikacje/analyses/2025-09-22/russian-fighter-jets-estonian-airspace-a-test-natos-unity" target="_blank">Source</a>
