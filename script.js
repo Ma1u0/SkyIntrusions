@@ -57,6 +57,16 @@ const balloonBlue = createIcon("blue_balloon.png");
    C Z E C H I A
 ========================= */
 
+L.marker([49.74390, 15.33811], { icon: droneYellow })
+  .addTo(map)
+  .bindPopup(`
+   <b> <a href="https://www.reuters.com/business/aerospace-defense/russias-suspected-hybrid-war-puts-european-air-defences-test-2025-11-05/" target="_blank">Czech Republic 🇨🇿</a> </b> <br>
+    <br>
+    <b>Date/Time:</b> 2025 <br>
+    <b>Type:</b> Drone sightings <br>
+    <b>Details:</b> On September 10th, the Czech army reported an growing number of drone sightings over it's military bases; no further details were provided <br>
+  `);
+
 /* =========================
    D E N M A R K
 ========================= */
@@ -119,6 +129,16 @@ L.marker([59.24755, 24.23912], { icon: jetRed })
 /* =========================
    F I N L A N D
 ========================= */
+
+L.marker([66.42822, 25.53514], { icon: droneYellow })
+  .addTo(map)
+  .bindPopup(`
+   <b> <a href="https://yle.fi/a/74-20185326" target="_blank">Valajaskoski Power Plant, Finland 🇫🇮</a> </b> <br>
+    <br>
+    <b>Date/Time:</b> 20/21 Sep 2025 <br>
+    <b>Type:</b> Drone sighting <br>
+    <b>Details:</b> An unknown perpetrator flew a drone over the power plant <br>
+  `);
 
 /* =========================
    F R A N C E
@@ -189,6 +209,46 @@ L.marker([53.42829, -6.24727], { icon: droneYellow })
 /* =========================
   N E T H E R L A N D S
 ========================= */
+
+L.marker([55.6181, 12.6508], { icon: droneYellowe })
+  .addTo(map)
+  .bindPopup(`
+    <b> Volkel Air Base, Netherlands 🇳🇱 </b><br><br>
+    
+    <b> <a href="https://www.rtl.nl/nieuws/binnenland/artikel/5540368/drones-eindhoven-volkel-tuinman-brekelmans-verjaagd" target="_blank">Incident 1</a> <b> <br>
+   <b> Date/Time:<b> 20 Nov 2025, sightings between 19:00 and 21:00 <br>
+   <b> Type: <b> Drone sightings <br>
+   <b> Details:<b> Ten drones spotted between 19:00 and 21:00; the military shot at the drones but they were able to fly away <br>
+    <br><br>
+    
+  <b> <a href="https://www.rtl.nl/nieuws/binnenland/artikel/5540368/drones-eindhoven-volkel-tuinman-brekelmans-verjaagd" target="_blank">Incident 2</a> <b> <br>
+   <b> Date/Time:<b> 22 Nov 2025 <br>
+   <b> Type: <b> Drone sighting<br>
+   <b> Details:<b> An unspecified amount of drones was spotted at the Volkel air base and were chased away <br>
+    <br><br>
+    <i>Note: Both incidents occurred during heightened drone alerts in Denmark.</i>
+    <hr>
+  `);
+
+L.marker([51.45190, 5.37488], { icon: droneYellow })
+  .addTo(map)
+  .bindPopup(`
+   <b> <a href="https://www.rtl.nl/nieuws/binnenland/artikel/5540318/vliegverkeer-eindhoven-airport-weer-hervat-na-eerdere-sluiting" target="_blank">Eindhoven Airport, Netherlands 🇳🇱</a> </b> <br>
+    <br>
+    <b>Date/Time:</b>  22 Nov 2025,  ~19:00 - 23:00 <br>
+    <b>Type:</b> Drone sighting / airport closure <br>
+    <b>Details:</b> Air traffic was halted following the sighting of multiple drones at the airport <br>
+  `);
+
+L.marker([52.24350, 5.63432], { icon: droneYellow })
+  .addTo(map)
+  .bindPopup(`
+   <b> <a href="https://www.defensie.nl/actueel/nieuws/2025/12/07/f-35-gevechtsvliegtuigen-ingezet-voor-onbekend-object" target="_blank">Netherlands 🇳🇱</a> </b> <br>
+    <br>
+    <b>Date/Time:</b> 07 Dec 2025, 10:20 <br>
+    <b>Type:</b> Drone sighting <br>
+    <b>Details:</b>  A drone entered Dutch airspace on an level where identification is required; the lack of it triggered the Quick Reaction Alert and two F-35  jets were scrambled; the drone left Dutch airspace <br>
+  `);
 
 /* =========================
    N O R W A Y
