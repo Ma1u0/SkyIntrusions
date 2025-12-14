@@ -221,7 +221,7 @@ L.marker([51.65831, 5.69801], { icon: droneYellow })
    <b> Details:</b> Ten drones spotted between 19:00 and 21:00; the military shot at the drones but they were able to fly away <br>
     <br><br>
     
-  <b> <a href="https://www.rtl.nl/nieuws/binnenland/artikel/5540368/drones-eindhoven-volkel-tuinman-brekelmans-verjaagd" target="_blank">Incident 2</a> <b> <br>
+  <b> <a href="https://www.rtl.nl/nieuws/binnenland/artikel/5540368/drones-eindhoven-volkel-tuinman-brekelmans-verjaagd" target="_blank">Incident 2</a> </b> <br>
    <b> Date/Time:</b> 22 Nov 2025 <br>
    <b> Type: </b> Drone sighting<br>
    <b> Details:</b> An unspecified amount of drones was spotted at the Volkel air base and were chased away <br>
