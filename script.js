@@ -270,7 +270,7 @@ L.marker([48.35396, 11.77859], { icon: droneYellow })
    <b> Details:</b>Two drones were spotted near the runways but disappeared before they were identified <br>
     <br>
     <hr>
-    <i>V The Oktoberfest was taking place during both incidents </i>
+    <i> The Oktoberfest was taking place during both incidents </i>
   `);
 
 L.marker([52.38492, 10.53923], { icon: droneGreen })
