@@ -124,6 +124,42 @@ L.marker([59.24755, 24.23912], { icon: jetRed })
    F R A N C E
 ========================= */
 
+L.marker([47.74672, 7.33899], { icon: droneYellow })
+  .addTo(map)
+  .bindPopup(`
+   <b> <a href="https://www.lemonde.fr/societe/article/2025/11/12/mulhouse-enquete-ouverte-apres-le-survol-d-un-convoi-de-chars-leclerc_6653159_3224.html" target="_blank">Mulhouse, France 🇫🇷</a> </b> <br>
+    <br>
+    <b>Date/Time:</b> 07 Nov 2025, 23:45 - 23:50 <br>
+    <b>Type:</b> Drone sightings <br>
+    <b>Details:</b> 1: A Policeman reported a drone sighting at the Mulhouse Police station (he didn't see the drone but could hear it) at 23:45 <br>
+                    2: At 23:50 a drone was reported at the Mulhouse Nord station, where a convoy of Leclerc tanks was stationed at 23:30; the drone flew without any lights on over the convoy and disappeared to an unknown location <br>
+    <br>
+    The police has no evidence to say wether it was a intentional or unintentional flight over these areas
+  `);
+
+L.marker([47.74672, 7.33899], { icon: droneYellow })
+  .addTo(map)
+  .bindPopup(`
+   <b> <a href="https://www.lemonde.fr/societe/article/2025/11/12/mulhouse-enquete-ouverte-apres-le-survol-d-un-convoi-de-chars-leclerc_6653159_3224.html" target="_blank">Bergerac, France 🇫🇷</a> </b> <br>
+    <br>
+    <b>Date/Time:</b>  10 Nov 2025, 19:00 <br>
+    <b>Type:</b> Drone sighting <br>
+    <b>Details:</b>  A drone flew twice over the Eurenco plant which produces gunpowder for the French Army; the drones couldn't be identified or downed <br>
+  `);
+
+
+L.marker([48.30461, 4.50851], { icon: droneYellow })
+  .addTo(map)
+  .bindPopup(`
+   <b> <a href="https://www.lemonde.fr/pixels/article/2025/12/05/la-base-sous-marine-de-l-ile-longue-qui-abrite-les-sous-marins-nucleaires-lanceurs-d-engins-survolee-par-des-drones_6656098_4408996.html" target="_blank">Île Longue, France 🇫🇷 </a> </b> <br>
+    <br>
+    <b>Date/Time:</b> 04 Dec 2025, 19:30 <br>
+    <b>Type:</b> Drone sighting^ <br>
+    <b>Details:</b> Five drones were spotted over the base with the help of anti drone systems; the stationed battalion shot at the drones  <br>
+    <br>
+    Île Longue is home to French nuclear ballistic missile submarines
+  `);
+
 /* =========================
    G E R M A N Y
 ========================= */
@@ -133,14 +169,14 @@ L.marker([59.24755, 24.23912], { icon: jetRed })
 ========================= */
 
 
-L.marker([53.42829, -6.24727], { icon: droneYellow })
+L.marker(53.42829, -6.24727], { icon: droneYellow })
   .addTo(map)
   .bindPopup(`
    <b> <a href="https://www.thejournal.ie/drones-dublin-ireland-hybrid-warfare-russia-6893104-Dec2025/" target="_blank">Dublin Airport, Ireland 🇮🇪</a> </b> <br>
     <br>
     <b>Date/Time:</b> 01 Dec 2025, shortly before 23:00 <br>
-    <b>Type:</b> Drone sighting<br>
-    <b>Details:</b> Four military grade drones flew near the airport when Zelensky´s plane was supposed to land ; the lights were on therefore authorities assume that it was only supposed to be a disruption of the landing<br>
+    <b>Type:</b> Drone sighting <br>
+    <b>Details:</b>  Four military grade drones flew near the airport when Zelensky´s plane was supposed to land ; the lights were on therefore authorities assume that it was only supposed to be a disruption of the landing <br>
     The drones were likely launched near Howth, from where they first flew above a naval vessel and then towards the location where Zelensky´s plane was supposed to be but his plane was slightly ahead of schedule <br>
     <br>
     Authorities believe the drones were quadcopters
