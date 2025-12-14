@@ -169,7 +169,7 @@ L.marker([48.30461, 4.50851], { icon: droneYellow })
 ========================= */
 
 
-L.marker(53.42829, -6.24727], { icon: droneYellow })
+L.marker([53.42829, -6.24727], { icon: droneYellow })
   .addTo(map)
   .bindPopup(`
    <b> <a href="https://www.thejournal.ie/drones-dublin-ireland-hybrid-warfare-russia-6893104-Dec2025/" target="_blank">Dublin Airport, Ireland 🇮🇪</a> </b> <br>
