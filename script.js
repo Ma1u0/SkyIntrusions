@@ -292,3 +292,39 @@ L.marker([38.28757, -0.55278], { icon: droneYellow })
 /* =========================
    S W E D E N
 ========================= */
+
+
+L.marker([55.60529, 13.00016], { icon: droneGreen })
+  .addTo(map)
+  .bindPopup(`
+    <b> <a href="https://www.aftonbladet.se/nyheter/a/AvjRoE/flera-dronarlarm-till-malmopolisen" target="_blank">Malmö, Sweden 🇸🇪</a> </b> <br>
+    <br>
+    <b>Date/Time:</b> 22 Sep 2025, ~21:00 <br>
+    <b>Type:</b> Drone sighting <br>
+    <b>Details:</b> A couple from Malmö reported seeing a large drone from their balcony. The drone headed eastwards
+    The police confirmed getting multiple calls about drone sighting but couldn't verify those reports themselves <br>
+    <br>
+  `);
+
+
+L.marker([55.60529, 13.00016], { icon: droneYellow })
+  .addTo(map)
+  .bindPopup(`
+    <b> <a href="https://www.sverigesradio.se/artikel/suspected-drones-spotted-near-karlskrona-naval-base" target="_blank">Karlskrona naval base, Sweden 🇸🇪</a> </b> <br>
+    <br>
+    <b>Date/Time:</b> 26 Sep 2025, at night <br>
+    <b>Type:</b> Drone sighting <br>
+    <b>Details:</b> An unidentified drone was seen about a mile from the naval base; the drone did not fly over any restricted objects <br>
+    <br>
+  `);
+
+L.marker([57.66242, 12.28776], { icon: droneYellow })
+  .addTo(map)
+  .bindPopup(`
+    <b> <a href="https://www.reuters.com/world/traffic-halted-swedish-city-gothenburgs-airport-after-drone-sighting-daily-2025-11-06/" target="_blank">Gothenburg Landvetter Airport, Sweden 🇸🇪</a> </b> <br>
+    <br>
+    <b>Date/Time:</b> 06 Nov 2025, 17:41 - 21:30 <br>
+    <b>Type:</b> Drone sighting / airport closure <br>
+    <b>Details:</b> AOne or more drones have been observed at the coast, close to the airport; air traffic resumed at around 21:30 <br>
+    <br>
+  `);
