@@ -215,7 +215,7 @@ L.marker([51.65831, 5.69801], { icon: droneYellow })
   .bindPopup(`
     <b> Volkel Air Base, Netherlands 🇳🇱 </b><br><br>
     
-    <b> <a href="https://www.rtl.nl/nieuws/binnenland/artikel/5540368/drones-eindhoven-volkel-tuinman-brekelmans-verjaagd" target="_blank">Incident 1</a> <b> <br>
+    <b> <a href="https://www.rtl.nl/nieuws/binnenland/artikel/5540368/drones-eindhoven-volkel-tuinman-brekelmans-verjaagd" target="_blank">Incident 1</a> </b> <br>
    <b> Date/Time:</b> 20 Nov 2025, sightings between 19:00 and 21:00 <br>
    <b> Type: </b> Drone sightings <br>
    <b> Details:</b> Ten drones spotted between 19:00 and 21:00; the military shot at the drones but they were able to fly away <br>
@@ -225,7 +225,7 @@ L.marker([51.65831, 5.69801], { icon: droneYellow })
    <b> Date/Time:</b> 22 Nov 2025 <br>
    <b> Type: </b> Drone sighting<br>
    <b> Details:</b> An unspecified amount of drones was spotted at the Volkel air base and were chased away <br>
-    <br><br>
+    <br>
     <hr>
     <i>Volkel is one of the two bases which are home to Dutch F-35 jets </i>
   `);
@@ -238,6 +238,7 @@ L.marker([51.45190, 5.37488], { icon: droneYellow })
     <b>Date/Time:</b>  22 Nov 2025,  ~19:00 - 23:00 <br>
     <b>Type:</b> Drone sighting / airport closure <br>
     <b>Details:</b> Air traffic was halted following the sighting of multiple drones at the airport <br>
+    <br>
     <hr>
     <i>Eindhoven airport is both a publicly and militarily used airport</i>
   `);
