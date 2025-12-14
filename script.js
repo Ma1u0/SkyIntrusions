@@ -210,7 +210,7 @@ L.marker([53.42829, -6.24727], { icon: droneYellow })
   N E T H E R L A N D S
 ========================= */
 
-L.marker([55.6181, 12.6508], { icon: droneYellow })
+L.marker([51.65831, 5.69801], { icon: droneYellow })
   .addTo(map)
   .bindPopup(`
     <b> Volkel Air Base, Netherlands 🇳🇱 </b><br><br>
@@ -226,8 +226,8 @@ L.marker([55.6181, 12.6508], { icon: droneYellow })
    <b> Type: <b> Drone sighting<br>
    <b> Details:<b> An unspecified amount of drones was spotted at the Volkel air base and were chased away <br>
     <br><br>
-    <i>Note: Both incidents occurred during heightened drone alerts in Denmark.</i>
     <hr>
+    <i>Volkel is one of the two bases which are home to Dutch F-35 jets.</i>
   `);
 
 L.marker([51.45190, 5.37488], { icon: droneYellow })
