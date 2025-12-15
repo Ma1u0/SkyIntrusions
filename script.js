@@ -7,18 +7,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 /* =========================
-   ICON FACTORY
-========================= */
-function createIcon(file) {
-    return L.icon({
-        iconUrl: `icons/${file}`,
-        iconSize: [32, 32],
-        iconAnchor: [18, 36],
-        popupAnchor: [0, -30]
-    });
-}
-
-/* =========================
    L E G E N D
 ========================= */
 
@@ -33,6 +21,18 @@ toggleBtn.addEventListener('click', () => {
         toggleBtn.textContent = 'Legend ▾';
     }
 });
+
+/* =========================
+   ICON FACTORY
+========================= */
+function createIcon(file) {
+    return L.icon({
+        iconUrl: `icons/${file}`,
+        iconSize: [32, 32],
+        iconAnchor: [18, 36],
+        popupAnchor: [0, -30]
+    });
+}
 
 /* =========================
    UAV ICONS
