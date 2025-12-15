@@ -1,84 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drone & Air Incident Map</title>
-  
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+/* Legend styling */
+#map-legend {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  font-family: sans-serif;
+  max-width: 200px;
+  z-index: 1000;
+}
 
-  <style>
-    /* Map full screen */
-    #map {
-      height: 100vh;
-      width: 100%;
-    }
+/* Make legend items always visible */
+.legend-items {
+  display: block; /* was 'none' */
+}
 
-    /* Legend styling */
-    #map-legend {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: white;
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      font-family: sans-serif;
-      max-width: 200px;
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
 
-    #legend-toggle {
-      cursor: pointer;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
+.legend-item img {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
 
-    #map-legend.expanded .legend-items {
-      display: block;
-    }
-
-    .legend-items {
-      display: none;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 5px;
-    }
-
-    .legend-item img {
-      width: 24px;
-      height: 24px;
-      margin-right: 5px;
-    }
-  </style>
-</head>
-<body>
-
-  <div id="map"></div>
-
-  <!-- Legend -->
-  <div id="map-legend">
-    <div id="legend-toggle">Legend</div>
-    <div class="legend-items">
-      <div class="legend-item"><img src="icons/red_drone.png" />Red Drone</div>
-      <div class="legend-item"><img src="icons/orange_drone.png" />Orange Drone</div>
-      <div class="legend-item"><img src="icons/yellow_drone.png" />Yellow Drone</div>
-      <div class="legend-item"><img src="icons/green_drone.png" />Green Drone</div>
-      <div class="legend-item"><img src="icons/blue_drone.png" />Blue Drone</div>
-      <div class="legend-item"><img src="icons/red_jet.png" />Red Jet</div>
-      <!-- Add more legend items as needed -->
-    </div>
-  </div>
-
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <!-- Your custom JS -->
-  <script src="script.js"></script>
-
-</body>
-</html>
+/* Remove toggle styles */
+#legend-toggle {
+  display: none; /* no toggle needed */
+}
