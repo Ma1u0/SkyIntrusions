@@ -1,6 +1,18 @@
 // Ensure JS runs after DOM loaded
 window.onload = function() {
+  
+/* =========================
+     LEGEND TOGGLE
+========================= */
+  const toggleBtn = document.getElementById('legend-toggle');
+  const legend = document.getElementById('map-legend');
 
+  if (toggleBtn && legend) {
+      toggleBtn.addEventListener('click', () => {
+          legend.classList.toggle('expanded');
+      });
+  }
+  
 // Initialize the map centered over Europe
 var map = L.map('map').setView([54.5, 10], 5);
 
