@@ -3,42 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leaflet Map with Legend</title>
+<title>European Drone & Air Incidents Map</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 <style>
-  /* Map container fills viewport */
-  #map {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    z-index: 1;
-  }
+  html, body { margin: 0; padding: 0; height: 100%; font-family: sans-serif; }
+  #map { width: 100%; height: 100%; }
 
-  /* Legend styling */
+  /* Legend container */
   #map-legend {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: white;
-    padding: 10px;
+    top: 15px;
+    right: 15px;
+    width: 260px;
+    background: rgba(255,255,255,0.95);
     border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.3);
-    z-index: 1000; /* above map */
-    pointer-events: auto;
-    transition: max-height 0.3s ease;
+    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    z-index: 1000;
     overflow: hidden;
-    max-height: 40px; /* collapsed height */
+    transition: max-height 0.3s ease;
+    max-height: 40px;
   }
 
-  #map-legend.expanded {
-    max-height: 400px; /* expanded height */
-  }
+  #map-legend.expanded { max-height: 500px; }
 
   #legend-toggle {
-    cursor: pointer;
     display: block;
+    padding: 10px 14px;
+    background: #0078A8;
+    color: white;
     font-weight: bold;
-    margin-bottom: 5px;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+  }
+
+  #legend-content {
+    padding: 10px 14px;
+    overflow-y: auto;
+    max-height: 450px;
+  }
+
+  #legend-content p {
+    margin: 6px 0;
+    font-size: 14px;
+  }
+
+  #legend-content img {
+    vertical-align: middle;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
   }
 </style>
 </head>
@@ -47,32 +61,34 @@
 <div id="map"></div>
 
 <div id="map-legend">
-  <span id="legend-toggle">Toggle Legend</span>
+  <div id="legend-toggle">Legend ⬇</div>
   <div id="legend-content">
-    <p>Red Drone: High alert</p>
-    <p>Orange Drone: Medium alert</p>
-    <p>Yellow Drone: Low alert</p>
-    <p>Green Drone: Observed</p>
+    <p><img src="icons/red_drone.png">Red Drone: High alert</p>
+    <p><img src="icons/orange_drone.png">Orange Drone: Medium alert</p>
+    <p><img src="icons/yellow_drone.png">Yellow Drone: Low alert</p>
+    <p><img src="icons/green_drone.png">Green Drone: Observed</p>
+    <p><img src="icons/red_jet.png">Red Jet: Airspace incursion</p>
+    <p><img src="icons/orange_jet.png">Orange Jet: Medium alert</p>
+    <p><img src="icons/yellow_jet.png">Yellow Jet: Low alert</p>
+    <p><img src="icons/green_jet.png">Green Jet: Observed</p>
   </div>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
   // Initialize map
-  var map = L.map('map').setView([54.5, 10], 5);
+  const map = L.map('map').setView([54.5, 10], 5);
 
-  // Add OpenStreetMap tiles
+  // Add OSM tiles
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
+    attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
   // Legend toggle
   const legend = document.getElementById('map-legend');
-  const toggleBtn = document.getElementById('legend-toggle');
-
-  toggleBtn.addEventListener('click', () => {
+  document.getElementById('legend-toggle').addEventListener('click', () => {
     legend.classList.toggle('expanded');
-    map.invalidateSize(); // refresh map after toggle
+    map.invalidateSize();
   });
 
   // Icon factory
@@ -85,15 +101,53 @@
     });
   }
 
-  // Example markers
-  const droneYellow = createIcon("yellow_drone.png");
+  // UAV Icons
   const droneRed = createIcon("red_drone.png");
+  const droneOrange = createIcon("orange_drone.png");
+  const droneYellow = createIcon("yellow_drone.png");
+  const droneGreen = createIcon("green_drone.png");
 
-  L.marker([49.74390, 15.33811], { icon: droneYellow }).addTo(map)
-    .bindPopup("<b>Czech Republic 🇨🇿</b><br>Drone sighting example.");
+  // Jet Icons
+  const jetRed = createIcon("red_jet.png");
+  const jetOrange = createIcon("orange_jet.png");
+  const jetYellow = createIcon("yellow_jet.png");
+  const jetGreen = createIcon("green_jet.png");
 
-  L.marker([55.60913, 12.65098], { icon: droneRed }).addTo(map)
-    .bindPopup("<b>Copenhagen, Denmark 🇩🇰</b><br>Drone sighting example.");
+  // -----------------------
+  // Add all your markers here
+  // -----------------------
+
+  // Example marker (replace with all markers from your script)
+  L.marker([49.74390, 15.33811], { icon: droneYellow })
+    .addTo(map)
+    .bindPopup(`<b>Czech Republic 🇨🇿</b><br>Drone sighting example`);
+
+  L.marker([55.60913, 12.65098], { icon: droneOrange })
+    .addTo(map)
+    .bindPopup(`<b>Copenhagen Airport, Denmark 🇩🇰</b><br>Drone sighting example`);
+
+  L.marker([54.19488, 9.09282], { icon: droneYellow })
+    .addTo(map)
+    .bindPopup(`<b>Heide, Germany 🇩🇪</b><br>Drone sighting example`);
+
+  // -----------------------
+  // OPTIONAL: Adjust popup maxWidth dynamically with zoom
+  // -----------------------
+  function getPopupWidth(zoom) {
+    if (zoom <= 5) return 200;
+    if (zoom <= 7) return 300;
+    if (zoom <= 9) return 420;
+    return 550;
+  }
+
+  map.on('zoomend', function () {
+    const zoom = map.getZoom();
+    map.eachLayer(layer => {
+      if (layer instanceof L.Marker && layer.getPopup()) {
+        layer.getPopup().options.maxWidth = getPopupWidth(zoom);
+      }
+    });
+  });
 </script>
 
 </body>
