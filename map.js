@@ -14,64 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const incidents = [
-/* =========================
-     B E L G I U M
- ========================= */
-
-/* =========================
-     C Z E C H I A 
- ========================= */
-
-/* =========================
-     D E N M A R K
- ========================= */
-
-/* =========================
-    E S T O N I A
- ========================= */
-
-/* =========================
-     F I N L A N D
- ========================= */
-
-/* =========================
-     F R A N C E
- ========================= */
-
-/* =========================
-     G E R M A N Y
- ========================= */
-
-/* =========================
-     I R E L A N D
- ========================= */
-
-    { lat: 53.42829, lng: -6.24727, icon: icons.droneYellow, type:'drone', risk:'yellow', location:'others', date:'2025-09-10', details:"Czech drone sightings.", link:"#", country:"Dublin Airport, Ireland 🇮🇪" },
-    
-/* =========================
-     L I T H U A N I A
- ========================= */
-
-/* =========================
-     N E T H E R L A N D S 
- ========================= */
-
-/* =========================
-     N O R W A Y
- ========================= */  
-
-/* =========================
-     P O L A N D
- ========================= */
-
- /* =========================
-     R O M A N I A
- ========================= */   
-
-/* =========================
-    S P A I N
- ========================= */
-
     { lat: 49.7439, lng: 15.3381, icon: icons.droneYellow, type:'drone', risk:'yellow', location:'others', date:'2025-09-10', details:"Czech drone sightings.", link:"#", country:"Czech 🇨🇿" },
     { lat: 40.7128, lng: -74.0060, icon: icons.jetRed, type:'jet', risk:'red', location:'others', date:'2025-10-12', details:"Jet over US airspace.", link:"#", country:"USA 🇺🇸" },
     { lat: 35.6895, lng: 139.6917, icon: icons.balloonBlue, type:'balloon', risk:'blue', location:'others', date:'2025-11-05', details:"Balloon over Japan.", link:"#", country:"Japan 🇯🇵" },
