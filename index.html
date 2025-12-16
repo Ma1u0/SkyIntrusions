@@ -218,30 +218,6 @@ html, body {
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-/* MAP — THIS IS THE IMPORTANT PART */
-const map = L.map('map').setView([20, 0], 2);
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 19
-}).addTo(map);
-
-/* MARKERS */
-const drone = L.marker([51, 0]).addTo(map).bindPopup('Drone UK');
-const jet = L.marker([40, -74]).addTo(map).bindPopup('Jet USA');
-const balloon = L.marker([35, 139]).addTo(map).bindPopup('Balloon Japan');
-
-const markers = [drone, jet, balloon];
-
-/* FILTERS (DUMMY FOR NOW) */
-function applyFilters() {
-  // no-op, just placeholder
-}
-
-/* PANEL TOGGLE */
-function togglePanel(id) {
-  document.getElementById(id).classList.toggle('collapsed');
-}
-
 
 const icons = {
   droneRed: L.icon({ iconUrl: 'icons/red_drone.png', iconSize: [28, 28] }),
@@ -262,6 +238,23 @@ const icons = {
   balloonGreen: L.icon({ iconUrl: 'icons/green_balloon.png', iconSize: [28, 28] }),
   balloonBlue: L.icon({ iconUrl: 'icons/blue_balloon.png', iconSize: [28, 28] }),
 };
+  
+/* MAP — THIS IS THE IMPORTANT PART */
+const map = L.map('map').setView([20, 0], 2);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19
+}).addTo(map);
+
+/* FILTERS (DUMMY FOR NOW) */
+function applyFilters() {
+  // no-op, just placeholder
+}
+
+/* PANEL TOGGLE */
+function togglePanel(id) {
+  document.getElementById(id).classList.toggle('collapsed');
+}
   
 </script>
 
