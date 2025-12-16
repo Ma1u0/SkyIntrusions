@@ -68,18 +68,44 @@ function applyFilters() {
   const showDrone = document.querySelector('#filters input[value="drone"]')?.checked ?? true;
   const showJet = document.querySelector('#filters input[value="jet"]')?.checked ?? true;
   const showBalloon = document.querySelector('#filters input[value="balloon"]')?.checked ?? true;
+  const showRed = document.querySelector('#filters input[value="red"]')?.checked ?? true;
+  const showOrange = document.querySelector('#filters input[value="orange"]')?.checked ?? true;
+  const showYellow = document.querySelector('#filters input[value="yellow"]')?.checked ?? true;
+  const showGreen = document.querySelector('#filters input[value="green"]')?.checked ?? true;
+  const showBlue = document.querySelector('#filters input[value="blue"]')?.checked ?? true;
 
-  markers.forEach(m => {
-    const type = m.meta.type;
-    if ((type === 'drone' && showDrone) ||
-        (type === 'jet' && showJet) ||
-        (type === 'balloon' && showBalloon)) {
-      map.addLayer(m);
-    } else {
-      map.removeLayer(m);
-    }
-  });
-}
+  const showAirport = document.querySelector('#filters input[value="airports"]')?.checked ?? true;
+  const showMilitaryBase = document.querySelector('#filters input[value="militarybases"]')?.checked ?? true;
+  const showOthers = document.querySelector('#filters input[value="others"]')?.checked ?? true;
+
+markers.forEach(m => {
+  const type = m.meta.type;
+  const risk = m.meta.risk;
+  const place = m.meta.placeType;
+
+  const typeMatch =
+    (type === 'drone' && showDrone) ||
+    (type === 'jet' && showJet) ||
+    (type === 'balloon' && showBalloon);
+
+  const riskMatch =
+    (risk === 'red' && showRed) ||
+    (risk === 'orange' && showOrange) ||
+    (risk === 'yellow' && showYellow) ||
+    (risk === 'green' && showGreen) ||
+    (risk === 'blue' && showBlue);
+
+  const placeMatch =
+    (place === 'airports' && showAirports) ||
+    (place === 'militarybases' && showMilitary) ||
+    (place === 'others' && showOthers);
+
+  if (typeMatch && riskMatch && placeMatch) {
+    map.addLayer(m);
+  } else {
+    map.removeLayer(m);
+  }
+});
 
 // Add event listeners
 document.querySelectorAll('#filters input[type="checkbox"]').forEach(cb => {
