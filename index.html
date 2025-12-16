@@ -85,10 +85,16 @@ html, body {
   gap: 10px; /* space between items */
   margin-bottom: 8px;
 }
-
-.filter-row-group .filter-row {
+  
+.filter-columns {
   display: flex;
-  align-items: center;
+  gap: 20px; /* space between the columns */
+}
+
+.filter-columns .filter-column {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* space between checkboxes inside a column */
 }
   
 </style>
@@ -105,20 +111,50 @@ html, body {
     <button onclick="togglePanel('filters')">▾</button>
   </div>
 <div class="panel-content">
-  <div class="filter-row-group">
-  <div class="filter-row">
-    <input type="checkbox" checked onchange="applyFilters()">
-    <img src="icons/uav.png"> Drones
-  </div>
-  <div class="filter-row">
-    <input type="checkbox" checked onchange="applyFilters()">
-    <img src="icons/fighter-plane.png"> Jets
-  </div>
-  <div class="filter-row">
-    <input type="checkbox" checked onchange="applyFilters()">
-    <img src="icons/balloon.png"> Balloons
+  <div class="filter-columns">
+    <!-- Column 1 -->
+    <div class="filter-column">
+      <label><input type="checkbox" checked onchange="applyFilters()">
+        <img src="icons/uav.png"> Drones
+      </label>
+      <label><input type="checkbox" checked onchange="applyFilters()">
+        🔴 Confirmed Russian
+      </label>
+      <label><input type="checkbox" checked onchange="applyFilters()">
+        <img src="icons/uav.png"> Airports
+      </label>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="filter-column">
+      <label><input type="checkbox" checked onchange="applyFilters()">
+        <img src="icons/fighter-plane.png"> Jets
+      </label>
+      <label><input type="checkbox" checked onchange="applyFilters()">
+        🟠 Suspected Russian
+      </label>
+      <label><input type="checkbox" checked onchange="applyFilters()">
+        <img src="icons/fighter-plane.png"> Military bases
+      </label>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="filter-column">
+      <label><input type="checkbox" checked onchange="applyFilters()">
+        <img src="icons/balloon.png"> Balloons
+      </label>
+      <label><input type="checkbox" checked onchange="applyFilters()">
+        🟡 Unknown actors
+      </label>
+      <label><input type="checkbox" checked onchange="applyFilters()">
+        <img src="icons/balloon.png"> Others
+      </label>
+    </div>
   </div>
 </div>
+
+
+  
  <div class="filter-row">
     <input type="checkbox" checked onchange="applyFilters()">
   🔴 Confirmed Russian
