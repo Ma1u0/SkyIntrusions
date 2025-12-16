@@ -45,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
 /* =========================
      I R E L A N D
  ========================= */
+
+    { lat: 53.42829, lng: -6.24727, icon: icons.droneYellow, type:'drone', risk:'yellow', location:'others', date:'2025-09-10', details:"Czech drone sightings.", link:"#", country:"Dublin Airport, Ireland 🇮🇪" },
     
 /* =========================
      L I T H U A N I A
