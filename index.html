@@ -3,21 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>World Incident Map</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Leaflet CSS -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
 <style>
 html, body {
   margin: 0;
   height: 100%;
 }
-
 #map {
   height: 100vh;
   width: 100vw;
@@ -33,7 +28,6 @@ html, body {
   width: 200px;
   z-index: 1000;
 }
-
 .panel-header {
   display: flex;
   justify-content: space-between;
@@ -41,18 +35,15 @@ html, body {
   font-weight: bold;
   background: #f0f0f0;
 }
-
 .panel button {
   background: none;
   border: none;
   font-size: 16px;
   cursor: pointer;
 }
-
 .panel-content {
   padding: 8px;
 }
-
 .collapsed .panel-content {
   display: none;
 }
@@ -61,58 +52,35 @@ html, body {
   bottom: 10px;
   right: 10px;
 }
-
 #legend {
   top: 10px;
   right: 10px;
 }
 
-.filter-row img,
-.legend-row img {
-  width: 28px;
-  height: 28px;
-  vertical-align: middle;
-  margin-right: 6px;
-}
-
-.filter-row,
-.legend-row {
-  margin-bottom: 8px; /* adjust spacing as needed */
-}
-
-.filter-row-group {
-  display: flex;
-  gap: 10px; /* space between items */
-  margin-bottom: 8px;
-}
-  
-/* Filter panel positioning */
-#filters {
-  bottom: 10px;
-  right: 10px;
-  width: auto; /* allow width to adjust */
-}
-
-/* Columns inside filters */
 .filter-columns {
   display: flex;
   gap: 20px;
 }
-
 .filter-columns .filter-column {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-
-/* Align icons nicely with text */
 .filter-column label img {
   width: 24px;
   height: 24px;
   vertical-align: middle;
   margin-right: 6px;
 }
-  
+.legend-row img {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+.legend-row {
+  margin-bottom: 8px;
+}
 </style>
 </head>
 
@@ -128,59 +96,30 @@ html, body {
   </div>
   <div class="panel-content">
     <div class="filter-columns">
-      <!-- Column 1 -->
+      <!-- Column 1: Type -->
       <div class="filter-column">
-     <label><input type="checkbox" value="drone" checked onchange="applyFilters()">
-  <img src="icons/uav.png"> Drones
-</label>
-
-<label><input type="checkbox" value="jet" checked onchange="applyFilters()">
-  <img src="icons/fighter-plane.png"> Jets
-</label>
-
-<label><input type="checkbox" value="balloon" checked onchange="applyFilters()">
-  <img src="icons/balloon.png"> Balloons
-</label>
+        <label><input type="checkbox" value="drone" checked> <img src="icons/uav.png"> Drones</label>
+        <label><input type="checkbox" value="jet" checked> <img src="icons/fighter-plane.png"> Jets</label>
+        <label><input type="checkbox" value="balloon" checked> <img src="icons/balloon.png"> Balloons</label>
       </div>
 
-      <!-- Column 2 -->
+      <!-- Column 2: Risk -->
       <div class="filter-column">
-        <label><input type="checkbox" value="red" checked onchange="applyFilters()">
-          🔴 Incidents confirmed to be caused by Russia
-        </label>
-        <label><input type="checkbox" value="orange" checked onchange="applyFilters()">
-          🟠 Incidents suspected to be caused by Russia
-        </label>
-        <label><input type="checkbox" value="yellow" checked onchange="applyFilters()">
-          🟡 Actor unknown
-        </label>
-        <label><input type="checkbox" value="green" checked onchange="applyFilters()">
-          🟢 Unverified sightings
-        </label>
-        <label><input type="checkbox" value="blue" checked onchange="applyFilters()">
-          🔵 Safety zone breaches
-        </label>
+        <label><input type="checkbox" value="red" checked> 🔴 Confirmed</label>
+        <label><input type="checkbox" value="orange" checked> 🟠 Suspected</label>
+        <label><input type="checkbox" value="yellow" checked> 🟡 Unknown</label>
+        <label><input type="checkbox" value="green" checked> 🟢 Unverified</label>
+        <label><input type="checkbox" value="blue" checked> 🔵 Safety</label>
       </div>
 
-      <!-- Column 3 -->
+      <!-- Column 3: Location -->
       <div class="filter-column">
-        <label><input type="checkbox" value="airports" checked onchange="applyFilters()">
-          <img src="icons/airport.png"> Airports
-        </label>
-        <label><input type="checkbox" value="militarybases" checked onchange="applyFilters()">
-          <img src="icons/soldier.png"> Military bases
-        </label>
-        <label><input type="checkbox" value="others" checked onchange="applyFilters()">
-          <img src="icons/dot-square.png"> Others
-        </label>
+        <label><input type="checkbox" value="airports" checked> <img src="icons/airport.png"> Airports</label>
+        <label><input type="checkbox" value="militarybases" checked> <img src="icons/soldier.png"> Military bases</label>
+        <label><input type="checkbox" value="others" checked> <img src="icons/dot-square.png"> Others</label>
       </div>
     </div>
   </div>
-</div>
-
-
-  
-</div>
 </div>
 
 <!-- LEGEND -->
@@ -189,75 +128,27 @@ html, body {
     <span>Legend</span>
     <button onclick="togglePanel('legend')">▾</button>
   </div>
- <div class="panel-content">
-  <div class="legend-row">
-    <img src="icons/uav.png"> Drone
-  </div>
-  <div class="legend-row">
-    <img src="icons/fighter-plane.png"> Jet
-  </div>
-  <div class="legend-row">
-    <img src="icons/balloon.png"> Balloon
-  </div>
-     <div class="legend-row">
-    🔴 Incidents confirmed to be caused by Russia
-  </div>
-  <div class="legend-row">
-    🟠 Incidents suspected to be caused by Russia
-  </div>
-  <div class="legend-row">
-    🟡 Actor unknown
-  </div>
-  <div class="legend-row">
-    🟢 Unverified sighting
-  </div>
-  <div class="legend-row">
-    🔵 Safety zone breach
+  <div class="panel-content">
+    <div class="legend-row"><img src="icons/uav.png"> Drone</div>
+    <div class="legend-row"><img src="icons/fighter-plane.png"> Jet</div>
+    <div class="legend-row"><img src="icons/balloon.png"> Balloon</div>
+    <div class="legend-row">🔴 Confirmed</div>
+    <div class="legend-row">🟠 Suspected</div>
+    <div class="legend-row">🟡 Unknown</div>
+    <div class="legend-row">🟢 Unverified</div>
+    <div class="legend-row">🔵 Safety</div>
   </div>
 </div>
 
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="map.js"></script>
 
 <script>
-
-const icons = {
-  droneRed: L.icon({ iconUrl: 'icons/red_drone.png', iconSize: [28, 28] }),
-  droneOrange: L.icon({ iconUrl: 'icons/orange_drone.png', iconSize: [28, 28] }),
-  droneYellow: L.icon({ iconUrl: 'icons/yellow_drone.png', iconSize: [28, 28] }),
-  droneGreen: L.icon({ iconUrl: 'icons/green_drone.png', iconSize: [28, 28] }),
-  droneBlue: L.icon({ iconUrl: 'icons/blue_drone.png', iconSize: [28, 28] }),
-
-  jetRed: L.icon({ iconUrl: 'icons/red_jet.png', iconSize: [28, 28] }),
-  jetOrange: L.icon({ iconUrl: 'icons/orange_jet.png', iconSize: [28, 28] }),
-  jetYellow: L.icon({ iconUrl: 'icons/yellow_jet.png', iconSize: [28, 28] }),
-  jetGreen: L.icon({ iconUrl: 'icons/green_jet.png', iconSize: [28, 28] }),
-  jetBlue: L.icon({ iconUrl: 'icons/blue_jet.png', iconSize: [28, 28] }),
-
-  balloonRed: L.icon({ iconUrl: 'icons/red_balloon.png', iconSize: [28, 28] }),
-  balloonOrange: L.icon({ iconUrl: 'icons/orange_balloon.png', iconSize: [28, 28] }),
-  balloonYellow: L.icon({ iconUrl: 'icons/yellow_balloon.png', iconSize: [28, 28] }),
-  balloonGreen: L.icon({ iconUrl: 'icons/green_balloon.png', iconSize: [28, 28] }),
-  balloonBlue: L.icon({ iconUrl: 'icons/blue_balloon.png', iconSize: [28, 28] }),
-};
-
-/* FILTERS (DUMMY FOR NOW) */
-function applyFilters() {
-  // no-op, just placeholder
-}
-
-/* PANEL TOGGLE */
 function togglePanel(id) {
   document.getElementById(id).classList.toggle('collapsed');
 }
-  
 </script>
-
-  <!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<!-- Your map + markers -->
-<script src="map.js"></script>
 
 </body>
 </html>
