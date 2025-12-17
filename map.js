@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
   icon: icons.droneYellow,
   type: 'drone',        // used for filtering
   risk: 'yellow',
-  place: 'militarybase',
+  place: 'militarybases',
   year: '2025',
   country: "Volkel Air Base, Netherlands 🇳🇱",
 
