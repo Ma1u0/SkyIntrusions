@@ -345,29 +345,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add markers to cluster
  incidents.forEach(i => {
    
-const popupHtml = `
-  <b><a href="${i.link}" target="_blank">${i.country}</a></b><br>
+const popupHtml = (() => {
+  let html = `<b>${i.link ? `<a href="${i.link}" target="_blank">${i.country}</a>` : i.country}</b><br>`;
 
-  ${i.note ? `<em>${i.note}</em><br><br>` : ''}
+  if (i.note) html += `<em>${i.note}</em><br><br>`;
 
-  ${
-    Array.isArray(i.incidents)
-      ? i.incidents.map((inc, idx) => `
-            <b>Incident ${idx + 1}</b><br>
-            <b>Type:</b> ${inc.popupType}<br>
-            <b>Date:</b> ${inc.date}<br>
-            <b>Details:</b> ${inc.details}<br>
-            <a href="${inc.link}" target="_blank">Source</a>
-            <hr>
-          `).join('')
-      : `
-            <b>Type:</b> ${i.popupType}<br>
-            <b>Date:</b> ${i.date}<br>
-            <b>Details:</b> ${i.details}<br>
-            <a href="${i.link}" target="_blank">Source</a>
-        `
+  if (Array.isArray(i.incidents)) {
+    i.incidents.forEach((inc, idx) => {
+      html += `<b>Incident ${idx + 1}</b><br>
+               <b>Type:</b> ${inc.popupType}<br>
+               <b>Date:</b> ${inc.date}<br>
+               <b>Details:</b> ${inc.details}<br>
+               ${inc.link ? `<a href="${inc.link}" target="_blank">Source</a>` : ''}
+               <hr>`;
+    });
+  } else {
+    html += `<b>Type:</b> ${i.popupType}<br>
+             <b>Date:</b> ${i.date}<br>
+             <b>Details:</b> ${i.details}<br>
+             ${i.link ? `<a href="${i.link}" target="_blank">Source</a>` : ''}`;
   }
-`;
+
+  return html;
+}
+ )
+  (
+)
+  ;
 
   const marker = L.marker([i.lat, i.lng], { icon: i.icon })
     .bindPopup(popupHtml);
