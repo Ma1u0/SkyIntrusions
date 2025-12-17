@@ -1,8 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize map
   const map = L.map('map').setView([20, 0], 2);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
 
+  // Initialize MarkerCluster group
+  const markerCluster = L.markerClusterGroup();
+  map.addLayer(markerCluster);
+
+  // Icons
   const icons = {
     droneRed: L.icon({ iconUrl: 'icons/red_drone.png', iconSize: [28,28] }),
     droneYellow: L.icon({ iconUrl: 'icons/yellow_drone.png', iconSize: [28,28] }),
@@ -13,11 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     othersBlue: L.icon({ iconUrl: 'icons/dot-square.png', iconSize: [28,28] })
   };
 
+  // Incident data
   const incidents = [
-    { lat: 53.42829, lng: -6.24727, icon: icons.droneYellow, type:'Drone sighting', risk:'yellow', location:'airport', date:'01 Dec 2025, shortly before 23:00',
-     details:"Four military grade drones flew near the airport when Zelensky´s plane was supposed to land ; the lights were on therefore authorities assume that it was only supposed to be a disruption of the landing <br> The drones were likely launched near Howth, from where they first flew above a naval vessel and then towards the location where Zelensky´s plane was supposed to be but his plane was slightly ahead of schedule <br> <br> Authorities believe the drones were quadcopters",
-     link:"https://www.thejournal.ie/drones-dublin-ireland-hybrid-warfare-russia-6893104-Dec2025/", country:"Dublin Airport, Ireland 🇮🇪" },
-    
+    { lat: 53.42829, lng: -6.24727, icon: icons.droneYellow, type:'drone', risk:'yellow', location:'airport', date:'01 Dec 2025, shortly before 23:00',
+      details:"Four military grade drones flew near the airport when Zelensky´s plane was supposed to land; lights were on, authorities assume it was a disruption of the landing. Drones likely launched near Howth, flew above naval vessel, then towards plane.", 
+      link:"https://www.thejournal.ie/drones-dublin-ireland-hybrid-warfare-russia-6893104-Dec2025/", country:"Dublin Airport, Ireland 🇮🇪" },
+
     { lat: 40.7128, lng: -74.0060, icon: icons.jetRed, type:'jet', risk:'red', location:'others', date:'2025-10-12', details:"Jet over US airspace.", link:"#", country:"USA 🇺🇸" },
     { lat: 35.6895, lng: 139.6917, icon: icons.balloonBlue, type:'balloon', risk:'blue', location:'others', date:'2025-11-05', details:"Balloon over Japan.", link:"#", country:"Japan 🇯🇵" },
     { lat: 51.4700, lng: -0.4543, icon: icons.airportGreen, type:'airport', risk:'green', location:'airports', date:'2025-10-01', details:"Heathrow Airport.", link:"#", country:"UK 🇬🇧" }
@@ -25,17 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const markers = [];
 
+  // Add markers to cluster
   incidents.forEach(i => {
-    const marker = L.marker([i.lat, i.lng], {icon:i.icon})
-      .bindPopup(`<b><a href="${i.link}" target="_blank">${i.country}</a></b><br>
-                  <b>Date:</b> ${i.date}<br>
-                  <b>Type:</b> ${i.type}<br>
-                  <b>Details:</b> ${i.details}`)
-      .addTo(map);
+    const marker = L.marker([i.lat, i.lng], { icon: i.icon })
+      .bindPopup(`
+        <b><a href="${i.link}" target="_blank">${i.country}</a></b><br>
+        <b>Date:</b> ${i.date}<br>
+        <b>Type:</b> ${i.type}<br>
+        <b>Details:</b> ${i.details}
+      `);
     marker.meta = i;
     markers.push(marker);
+    markerCluster.addLayer(marker); // Add to cluster instead of map
   });
 
+  // Filter function
   function applyFilters() {
     const showDrone = document.querySelector('#filters input[value="drone"]').checked;
     const showJet = document.querySelector('#filters input[value="jet"]').checked;
@@ -59,13 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const riskMatch = (r==='red' && showRed) || (r==='orange' && showOrange) || (r==='yellow' && showYellow) ||
                         (r==='green' && showGreen) || (r==='blue' && showBlue);
 
-      if(typeMatch && riskMatch) map.addLayer(m);
-      else map.removeLayer(m);
+      if(typeMatch && riskMatch) markerCluster.addLayer(m);
+      else markerCluster.removeLayer(m);
     });
   }
 
+  // Add event listeners for filters
   document.querySelectorAll('#filters input[type="checkbox"]').forEach(cb => {
     cb.addEventListener('change', applyFilters);
   });
-
 });
