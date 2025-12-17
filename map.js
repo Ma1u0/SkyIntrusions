@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     year: '2025',
     popupType: 'Drone sighting ', // shown in popup
     date: ' 04 Dec 2025, 19:30 ',
-    details: "Five drones were spotted over the base with the help of anti drone systems; the stationed battalion shot at the drones <br><br> Île Longue is home to French nuclear ballistic missile submarines",
+    details: "Five drones were spotted over the base with the help of anti drone systems; the stationed battalion shot at the drones",
     link: "https://www.lemonde.fr/societe/article/2025/11/12/mulhouse-enquete-ouverte-apres-le-survol-d-un-convoi-de-chars-leclerc_6653159_3224.html",
     country: "Île Longue, France 🇫🇷",
     note: "Île Longue is home to French nuclear ballistic missile submarines",
@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
  incidents.forEach(i => {
    
 const popupHtml = `
-  <b>${i.country}</b><br>
+  <b><a href="${i.link}" target="_blank">${i.country}</a></b><br>
 
   ${i.note ? `<em>${i.note}</em><br><br>` : ''}
 
@@ -360,6 +360,13 @@ const popupHtml = `
             <hr>
           `).join('')
         : `
+            <b>Type:</b> ${i.popupType}<br>
+            <b>Date:</b> ${i.date}<br>
+            <b>Details:</b> ${i.details}<br>
+            <a href="${i.link}" target="_blank">Source</a>
+          `
+  }
+`;
             <b>Type:</b> ${i.popupType}<br>
             <b>Date:</b> ${i.date}<br>
             <b>Details:</b> ${i.details}<br>
