@@ -52,6 +52,36 @@ document.addEventListener('DOMContentLoaded', () => {
        E S T O N I A
     ========================= */
 
+  {
+    lat: 59.81850,
+    lng: 26.35943,
+    icon: icons.jetRed,
+    type: 'jet',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Airspace incursion ', // shown in popup
+    date: ' 19 Sep 2025, entered airspace between 09:58 and 10:10',
+    details: "Three Russian jets breached Estonian airspace up to 10 km deep for 12 minutes before being escorted by NATO jets <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://www.osw.waw.pl/en/publikacje/analyses/2025-09-22/russian-fighter-jets-estonian-airspace-a-test-natos-unity",
+    country: "Vaindloo Island, Estonia 🇪🇪"
+  },
+
+  {
+    lat: 57.80556,
+    lng: 26.97528,
+    icon: icons.droneYellow,
+    type: 'drone',      // used for filtering
+    risk: 'yellow',
+    place: 'militarybase',
+    year: '2025',
+    popupType: 'Airspace incursion ', // shown in popup
+    date: ' 19 Sep 2025, entered airspace between 09:58 and 10:10',
+    details: "Three Russian jets breached Estonian airspace up to 10 km deep for 12 minutes before being escorted by NATO jets <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://www.trtworld.com/article/efc330793d51",
+    country: "Reedo military barracks, Estonia 🇪🇪"
+  },
+    
      /* =========================
        F I N L A N D
     ========================= */
