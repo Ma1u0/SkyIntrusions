@@ -96,6 +96,22 @@ document.addEventListener('DOMContentLoaded', () => {
     link: "https://www.ilgiornale.it/news/difesa/scramble-efa-italiani-hanno-intercettato-raro-aereo-russo-2572772.html",
     country: "Ämari, Estonia 🇪🇪"
   },
+
+  {
+    lat: 58.99872,
+    lng: 27.73583,
+    icon: icons.jetRed,
+    type: 'jet',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Border crossing ', // shown in popup
+    date: '  17 Dec 2025, ~10:00 ',
+    details: "Three Russian border guards crossed the border on hovercrafts; they walked on the stone breakwater and returned to Russia again <br> It is unknown wether this was intentional or not",
+    link: "https://news.err.ee/1609888417/russian-border-guards-crossed-into-estonia-with-unclear-motives-minister-says",
+    country: "Narva River / Vasknarva breakwater, Estonia 🇪🇪",
+    note: "Estonia says that the guards aren't reliable since the war because they are brought in from other regions and change and them often changing their place of deployment <br><br> Russian ships normally have to ask for permission to cross that area to get into the Russian part of Lake Peipsi",
+  },
     
      /* =========================
        F I N L A N D
@@ -157,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'militarybase',
+    place: 'militarybass',
     year: '2025',
     popupType: 'Drone sighting ', // shown in popup
     date: ' 04 Dec 2025, 19:30 ',
@@ -411,6 +427,51 @@ document.addEventListener('DOMContentLoaded', () => {
        S W E D E N  
     ========================= */
 
+ {
+    lat: 55.60529,
+    lng: 13.00016,
+    icon: icons.droneGreen,
+    type: 'drone',      // used for filtering
+    risk: 'green',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone sighting ', // shown in popup
+    date: '22 Sep 2025, ~21:00',
+    details: "A couple from Malmö reported seeing a large drone from their balcony. The drone headed eastwards <br> The police confirmed getting multiple calls about drone sighting but couldn't verify those reports themselves",
+    link: "https://www.aftonbladet.se/nyheter/a/AvjRoE/flera-dronarlarm-till-malmopolisen",
+    country: "Malmö, Sweden 🇸🇪"
+  },
+
+  {
+    lat: 56.15935,
+    lng: 15.57863,
+    icon: icons.droneYellow,
+    type: 'drone',      // used for filtering
+    risk: 'yellow',
+    place: 'militarybases',
+    year: '2025',
+    popupType: 'Drone sighting ', // shown in popup
+    date: '26 Sep 2025, at night',
+    details: "An unidentified drone was seen about a mile from the naval base; the drone did not fly over any restricted objects",
+    link: "https://www.sverigesradio.se/artikel/suspected-drones-spotted-near-karlskrona-naval-base",
+    country: "Karlskrona naval base, Sweden 🇸🇪"
+  },
+
+  {
+    lat: 57.66242,
+    lng: 12.28776,
+    icon: icons.droneYellow,
+    type: 'drone',      // used for filtering
+    risk: 'yellow',
+    place: 'airport',
+    year: '2025',
+    popupType: ' Drone sighting / airport closure ', // shown in popup
+    date: '06 Nov 2025, 17:41 - 21:30',
+    details: "One or more drones have been observed at the coast, close to the airport; air traffic resumed at around 21:30",
+    link: "https://www.reuters.com/world/traffic-halted-swedish-city-gothenburgs-airport-after-drone-sighting-daily-2025-11-06/",
+    country: "Gothenburg Landvetter Airport, Sweden 🇸🇪"
+  },
+    
      /* =========================
        T U R K E Y
     ========================= */
