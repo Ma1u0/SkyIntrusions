@@ -715,7 +715,11 @@ document.addEventListener('DOMContentLoaded', () => {
 const popupHtml = (() => {
   let html = `<b>${i.link ? `<a href="${i.link}" target="_blank">${i.country}</a>` : i.country}</b><br>`;
 
-  if (i.note) html += `<em>${i.note}</em><br><br>`;
+  if (i.note) {
+    html += `<em>${i.note}</em>`;
+    if (i.noteLink) html += ` <a href="${i.noteLink}" target="_blank">Source</a>`;
+    html += '<br><br>';
+  }
 
   if (Array.isArray(i.incidents)) {
     i.incidents.forEach((inc, idx) => {
@@ -734,11 +738,7 @@ const popupHtml = (() => {
   }
 
   return html;
-}
- )
-  (
-)
-  ;
+})();
 
   const marker = L.marker([i.lat, i.lng], { icon: i.icon })
     .bindPopup(popupHtml);
