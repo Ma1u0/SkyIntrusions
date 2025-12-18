@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneGreen,
     type: 'drone',      // used for filtering
     risk: 'green',
-    place: 'others',
+    place: 'infrastructure',
     year: '2025',
     popupType: 'Unverified Drone sighting ', // shown in popup
     date: '25 Sep 2025',
@@ -954,6 +954,7 @@ const popupHtml = (() => {
 
   const showAirports = document.querySelector('#filters input[value="airports"]').checked;
   const showMilitary = document.querySelector('#filters input[value="militarybases"]').checked;
+  const showInfrastructure = document.querySelector('#filters input[value="infrastructure"]').checked;
   const showOthers = document.querySelector('#filters input[value="others"]').checked;
 
   const show25 = document.querySelector('#filters input[value="2025"]').checked;
@@ -980,6 +981,7 @@ const popupHtml = (() => {
     const placeMatch =
       (p === 'airport' && showAirports) ||
       (p === 'militarybases' && showMilitary) ||
+      (p === 'infrastructure' && showInfrastructure) ||
       (p === 'others' && showOthers);
 
     const yearMatch =
