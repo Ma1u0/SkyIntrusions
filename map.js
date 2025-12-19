@@ -1752,8 +1752,8 @@ L.control.zoom({
     ========================= */
 
    {
-    lat: 42.87107,
-    lng: 34.51879,
+    lat: 39.93011,
+    lng: 32.85744,
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
@@ -1763,7 +1763,7 @@ L.control.zoom({
     date: '15 Sep 2025',
     details: " Turkish F-16 fighters shot down an out-of-control unidentified UAV. The drone was shot down near Ankara",
     link: "https://www.trtworld.com/article/efc330793d51",
-    country: "Black Sea, Türkiye 🇹🇷"
+    country: "Ankara Region, Türkiye 🇹🇷"
   },
 
    {
