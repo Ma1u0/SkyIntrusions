@@ -113,21 +113,20 @@ html, body {
 
 /* Hamburger handle */
 #sidebar-handle {
-   position: absolute;
--  right: -30px;
-+  left: 0;
-   top: 20px;
-   width: 30px;
-   height: 40px;
-   background: white;
-   border-radius: 0 6px 6px 0;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   box-shadow: 2px 0 6px rgba(0,0,0,0.3);
-   cursor: pointer;
-   font-size: 20px;
-+  z-index: 1001;
+  position: absolute;
+  left: 0; /* fixed handle on the left */
+  top: 20px;
+  width: 30px;
+  height: 40px;
+  background: white;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 1001; /* above sidebar */
 }
   
 </style>
