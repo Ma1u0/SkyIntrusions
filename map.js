@@ -1759,6 +1759,22 @@ document.addEventListener('DOMContentLoaded', () => {
     link: "https://www.trtworld.com/article/efc330793d51",
     country: "Black Sea, Türkiye 🇹🇷"
   },
+
+   {
+    lat: 40.86296,
+    lng: 30.02798,
+    icon: icons.droneYellow,
+    type: 'drone',      // used for filtering
+    risk: 'yellow',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: '19 Dec 2025',
+    details: "A crashed, unidentified UAV was found by citizens. The camera is still working. <br> The drone is 1.5m long and has a wingspan of 2.5m",
+    link: "https://www.trtworld.com/article/efc330793d51",
+    country: "Black Sea, Türkiye 🇹🇷"
+  },
+    
   ];
 
   const markers = [];
