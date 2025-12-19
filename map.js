@@ -1009,6 +1009,32 @@ document.addEventListener('DOMContentLoaded', () => {
        L I T H U A N I A
     ========================= */
 
+  {
+  lat: 54.63497,
+  lng: 25.29054,
+  icon: icons.balloonYellow,
+  type: 'balloon',        // used for filtering
+  risk: 'yellow',
+  place: 'airport',
+  year: '2025',
+  country: "Vilnius Airport / Lithuanian-Belarusian border, Lithuania 🇱🇹",
+
+  incidents: [
+    {
+      popupType: ' Weather balloons / Smuggle balloons / Airport closure',
+      date: ' 04 Oct 2025, 22:16 - 04:50',
+      details: "Air traffic was halted due to balloons moving in he direction of Vilnius Airport",
+      link: "https://www.vilnius-airport.lt/en/news/flights-and-operations-at-vilnius-airport-fully-resumed-on-sunday-morning-delays-possible-throughout-the-day"
+    },
+    {
+      popupType: 'Weather balloons / Smuggle balloons / Airport closure',
+      date: '21 Oct 2025, 22:23 - 06:40',
+      details: "Air traffic was halted due to balloons moving in he direction of Vilnius Airport",
+      link: "https://www.vilnius-airport.lt/en/news/flights-and-operations-at-vilnius-airport-fully-resumed-on-wednesday-morning-delays-possible-throughout-the-day"
+    }
+  ]
+},
+    
      /* =========================
         N E T H E R L A N D S
     ========================= */
