@@ -1771,8 +1771,8 @@ document.addEventListener('DOMContentLoaded', () => {
     popupType: 'Drone incursion / crash site ', // shown in popup
     date: '19 Dec 2025',
     details: "A crashed, unidentified UAV was found by citizens. The camera is still working. <br> The drone is 1.5m long and has a wingspan of 2.5m",
-    link: "https://www.trtworld.com/article/efc330793d51",
-    country: "Black Sea, Türkiye 🇹🇷"
+    link: "https://en.haberler.com/a-drone-has-crashed-in-izmit-its-camera-is-19372026/",
+    country: "Çubuklubala neighborhood, Izmit, Turkey 🇹🇷"
   },
     
   ];
