@@ -98,31 +98,36 @@ html, body {
 
 /* Actual white panel */
 #sidebar-content {
+  width: 250px;
   height: 100%;
   background: rgba(255,255,255,0.97);
   box-shadow: 2px 0 10px rgba(0,0,0,0.25);
   padding: 12px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
-.sidebar-closed {
-  transform: translateX(-220px); /* sidebar width (250) - handle (~30) */
+#sidebar:not(.sidebar-closed) #sidebar-content {
+  transform: translateX(0);
 }
 
 /* Hamburger handle */
 #sidebar-handle {
-  position: absolute;
-  right: -30px;
-  top: 20px;
-  width: 30px;
-  height: 40px;
-  background: white;
-  border-radius: 0 6px 6px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
-  cursor: pointer;
-  font-size: 20px;
+   position: absolute;
+-  right: -30px;
++  left: 0;
+   top: 20px;
+   width: 30px;
+   height: 40px;
+   background: white;
+   border-radius: 0 6px 6px 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+   cursor: pointer;
+   font-size: 20px;
++  z-index: 1001;
 }
   
 </style>
