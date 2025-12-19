@@ -9,67 +9,72 @@
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
 
 <style>
-  body, html {
-    margin: 0;
-    height: 100%;
-    font-family: sans-serif;
-  }
+body, html {
+  margin: 0;
+  height: 100%;
+  font-family: sans-serif;
+}
 
-  /* Sidebar */
-  #sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    background: #f9f9f9;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    overflow-y: auto;
-    transition: transform 0.3s ease;
-    transform: translateX(-220px); /* closed by default */
-  }
+/* Sidebar */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #f9f9f9;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  transform: translateX(-250px); /* fully hidden */
+}
 
-  #sidebar-content a {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: black;
-  }
+#sidebar.sidebar-open {
+  transform: translateX(0);
+}
 
-  #sidebar-handle {
-    position: absolute;
-    right: -30px;
-    top: 20px;
-    width: 30px;
-    height: 40px;
-    background: white;
-    border-radius: 0 6px 6px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 2px 0 6px rgba(0,0,0,0.3);
-    font-size: 20px;
-    z-index: 1001;
-  }
+#sidebar-content a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: black;
+}
 
-  /* Main content */
-  #main-content {
-    margin-left: 30px; /* start near sidebar handle */
-    padding: 20px;
-    transition: margin-left 0.3s ease;
-  }
+/* Hamburger handle (outside sidebar so always visible) */
+#sidebar-handle {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 30px;
+  height: 40px;
+  background: white;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+  font-size: 20px;
+  z-index: 1001;
+}
 
-  #sidebar.sidebar-open ~ #main-content {
-    margin-left: 260px; /* sidebar width + spacing */
-  }
+/* Main content */
+#main-content {
+  margin-left: 40px; /* leave space for hamburger */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
 
-  /* Calendar */
-  #calendar {
-    max-width: 900px;
-    margin: 20px auto;
-  }
+#sidebar.sidebar-open ~ #main-content {
+  margin-left: 260px; /* sidebar width + spacing */
+}
+
+/* Calendar container */
+#calendar {
+  max-width: 900px;
+  margin: 20px auto;
+}
 </style>
 </head>
 <body>
@@ -80,8 +85,10 @@
     <p><a href="index.html">🗺️ Map</a></p>
     <p><a href="calendar.html">📅 Calendar</a></p>
   </div>
-  <div id="sidebar-handle">&#9776;</div>
 </div>
+
+<!-- Hamburger (always visible) -->
+<div id="sidebar-handle">&#9776;</div>
 
 <!-- Main content -->
 <div id="main-content">
@@ -93,6 +100,7 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
 
 <script>
+// Sidebar toggle
 const sidebar = document.getElementById('sidebar');
 const handle = document.getElementById('sidebar-handle');
 
@@ -107,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
-    initialDate: '2025-09-01', // start in September 2025
+    initialDate: '2025-09-01', // September 2025
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
