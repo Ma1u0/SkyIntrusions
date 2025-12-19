@@ -1126,6 +1126,346 @@ document.addEventListener('DOMContentLoaded', () => {
         P O L A N D
     ========================= */
 
+ {
+    lat: 54.07913,
+    lng: 19.28654,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Oleśno, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+ {
+    lat: 54.17067,
+    lng: 21.14419,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Korsze, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+ {
+    lat: 52.41383,
+    lng: 21.78624,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Rabiany, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+ {
+    lat: 52.03402,
+    lng: 21.97834,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Wodynie, Poland 🇵🇱 ",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+ {
+    lat: 51.71693,
+    lng: 21.10515,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Biała Góra, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+ {
+    lat: 51.61669,
+    lng: 20.57962,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Nowe Miasto nad Pilicą, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+ {
+    lat: 51.37017,
+    lng: 20.03559,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Mniszków, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+     {
+    lat: 50.81616,
+    lng: 20.87094,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Smyków, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+     {
+    lat: 50.48317,
+    lng: 20.99855,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Czyżów, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+     {
+    lat: 50.79509,
+    lng: 21.68261,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Sobótka, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+     {
+    lat: 50.70306,
+    lng: 23.44076,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Cześniki, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+     {
+    lat: 50.87200,
+    lng: 23.31099,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Sulmice, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+     {
+    lat: 51.06694,
+    lng: 22.53167,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Bychawka Trzecia, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+     {
+    lat: 51.48374,
+    lng: 23.20494,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Wielki Łan, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+     {
+    lat: 51.56174,
+    lng: 23.36537,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Wyryki-Wola, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+         {
+    lat: 51.59417,
+    lng: 23.15667,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Krzywowierzba-Kolonia, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+         {
+    lat: 51.61859,
+    lng: 23.16541,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Wyhalew, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+         {
+    lat: 51.75623,
+    lng: 22.78631,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Wohyń, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+         {
+    lat: 52.01447,
+    lng: 23.22587,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Czosnówka, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+
+         {
+    lat: 51.84140,
+    lng: 23.57214,
+    icon: icons.droneRed,
+    type: 'drone',      // used for filtering
+    risk: 'red',
+    place: 'others',
+    year: '2025',
+    popupType: 'Drone incursion / crash site ', // shown in popup
+    date: ' 09–10 Sep 2025, ~23:30–06:45',
+    details: "Russian drone crashed here (23 overall). Airspace closures affected Warsaw Chopin, Warsaw Modlin, Lublin, and Rzeszów‑Jasionka airports. <br> Multiple drones were shot down by Polish and Dutch jets. <br> Drones crashed up to 450 km from the Ukrainian border and 300 km from the Belarusian border; came from both Ukrainian and Belarusian airspace. <br><br> NATO Article 4 was invoked following this incident",
+    link: "https://tvpworld.com/88854104/russian-drone-incursion-into-poland-factbox",
+    country: "Zabłocie-Kolonia, Poland 🇵🇱",
+    note: "It is suspected that at least some of the drones were equipped with explosives",
+    noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
+  },
+    
      /* =========================
        R O M A N I A
     ========================= */
