@@ -1465,6 +1465,23 @@ document.addEventListener('DOMContentLoaded', () => {
     note: "It is suspected that at least some of the drones were equipped with explosives",
     noteLink: "https://www.rp.pl/wojsko/art43326881-gen-maciej-klisz-w-wyrykach-po-zniszczeniu-domu-zapadla-decyzja-ze-bierzemy-to-na-klate"
   },
+
+    
+    {
+    lat: 55.40000,
+    lng: 18.72167,
+    icon: icons.jetBlue,
+    type: 'jet',      // used for filtering
+    risk: 'blue',
+    place: 'infrastructure',
+    year: '2025',
+    popupType: 'Safety-zone violation ', // shown in popup
+    date: ' 19 Sep 2025, Twitter statement at 18:54; no time of the incident published',
+    details: "wo Russian jets performed a low pass over the Petrobaltic platform at ~150 m altitude, violating the platform’s safety zone in the Polish EEZ.",
+    link: "https://www.polskieradio.pl/395/7784/artykul/3582003,russian-fighter-jets-make-low-pass-over-polish-offshore-platform?",
+    country: "Petrobaltic platform, Poland 🇵🇱",
+    note: "This was not a violation of Polish airspace but a violation of the safety zone of the platform",
+  },
     
      /* =========================
        R O M A N I A
