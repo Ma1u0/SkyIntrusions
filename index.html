@@ -13,6 +13,7 @@ html, body {
   margin: 0;
   height: 100%;
 }
+
 #map {
   height: 100vh;
   width: 100vw;
@@ -55,28 +56,28 @@ html, body {
 #filters {
   bottom: 10px;
   right: 10px;
-  width: 800px;   /* width when open */
+  width: 800px; 
   height: auto;
   transition: width 0.2s ease, height 0.2s ease;
 }
 
 #filters.collapsed {
-  width: 100px;  /* width when closed */
-  height: 40px;  /* just the header */
+  width: 100px;  
+  height: 40px;  
 }
 
 /* Legend panel */
 #legend {
   top: 10px;
   right: 10px;
-  width: 300px;  /* width when open */
+  width: 300px;  
   height: auto;
   transition: width 0.2s ease, height 0.2s ease;
 }
 
 #legend.collapsed {
-  width: 150px;  /* width when closed */
-  height: 40px;  /* just the header */
+  width: 150px;  
+  height: 40px;  
 }
 
 /* Columns and content */
@@ -86,17 +87,7 @@ html, body {
 .legend-row img { width:28px; height:28px; vertical-align:middle; margin-right:6px; }
 .legend-row { margin-bottom:8px; }
 
-#sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: transparent;
-  z-index: 1000;
-  display: flex;
-}
-
-/* Actual white panel */
+/* Sidebar */
 #sidebar {
   position: absolute;
   top: 0;
@@ -105,16 +96,16 @@ html, body {
   width: 250px;
   display: flex;
   z-index: 1000;
-  transform: translateX(-220px); /* closed */
+  transform: translateX(-220px); /* closed: only hamburger visible */
   transition: transform 0.3s ease;
 }
 
 #sidebar:hover {
-  transform: translateX(0); /* opens on hover */
+  transform: translateX(0); /* open on hover */
 }
 
 #sidebar.sidebar-open {
-  transform: translateX(0); /* opens on click */
+  transform: translateX(0); /* open on click */
 }
 
 #sidebar-content {
@@ -126,10 +117,9 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Hamburger handle */
 #sidebar-handle {
   position: absolute;
-  right: -30px; /* sticks out from the sidebar */
+  right: 0; /* always visible at the edge */
   top: 20px;
   width: 30px;
   height: 40px;
@@ -143,11 +133,12 @@ html, body {
   font-size: 20px;
   z-index: 1001;
 }
-  
+</style>
 </head>
 
 <body>
-  
+
+<!-- Sidebar -->
 <div id="sidebar">
   <div id="sidebar-content">
     <h3>Statistics</h3>
@@ -158,9 +149,10 @@ html, body {
   <div id="sidebar-handle">&#9776;</div>
 </div>
 
+<!-- Map -->
 <div id="map"></div>
 
-<!-- FILTERS PANEL -->
+<!-- Filters Panel -->
 <div id="filters" class="panel collapsed">
   <div class="panel-header">
     <span>Filters</span>
@@ -168,14 +160,12 @@ html, body {
   </div>
   <div class="panel-content">
     <div class="filter-columns">
-      <!-- Type -->
       <div class="filter-column">
         <label><input type="checkbox" value="drone" checked> <img src="icons/uav.png"> Drones</label>
         <label><input type="checkbox" value="jet" checked> <img src="icons/fighter-plane.png"> Jets</label>
         <label><input type="checkbox" value="balloon" checked> <img src="icons/balloon.png"> Balloons</label>
         <label><input type="checkbox" value="border" checked> <img src="icons/soldier.png"> Ground Border Crossing</label>
       </div>
-      <!-- Confirmation -->
       <div class="filter-column">
         <label><input type="checkbox" value="red" checked> 🔴 Incidents confirmed to be caused by Russia</label>
         <label><input type="checkbox" value="orange" checked> 🟠 Incidents suspected to be caused by Russia</label>
@@ -183,25 +173,21 @@ html, body {
         <label><input type="checkbox" value="green" checked> 🟢 Sightings unverified</label>
         <label><input type="checkbox" value="blue" checked> 🔵 Safety zone breaches</label>
       </div>
-      <!-- Location -->
       <div class="filter-column">
         <label><input type="checkbox" value="airports" checked> <img src="icons/airport.png"> Airports</label>
         <label><input type="checkbox" value="militarybases" checked> <img src="icons/soldier.png"> Military bases</label>
         <label><input type="checkbox" value="infrastructure" checked> <img src="icons/nuclear-plant.png"> Infrastructure </label>
         <label><input type="checkbox" value="others" checked> <img src="icons/dot-square.png"> Others</label>
       </div>
-       <!-- Year -->
       <div class="filter-column">
         <label><input type="checkbox" value="2025" checked> 2025</label>
         <label><input type="checkbox" value="2026" checked> 2026</label>
-</div>
-
-      
+      </div>
     </div>
   </div>
 </div>
 
-<!-- LEGEND PANEL -->
+<!-- Legend Panel -->
 <div id="legend" class="panel">
   <div class="panel-header">
     <span>Legend</span>
@@ -214,7 +200,7 @@ html, body {
     <div class="legend-row"><img src="icons/base.png"> Ground Border Crossing</div>
     <div class="legend-row">🔴 Incident confirmed to be caused by Russia</div>
     <div class="legend-row">🟠 Incident suspected to be caused by Russia</div>
-    <div class="legend-row">🟡 Actor unknoen</div>
+    <div class="legend-row">🟡 Actor unknown</div>
     <div class="legend-row">🟢 Sighting unverified</div>
     <div class="legend-row">🔵 Safety zone breach</div>
   </div>
@@ -222,29 +208,24 @@ html, body {
 
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<!-- MarkerCluster library -->
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-
-<!-- Your map script -->
 <script src="map.js"></script>
 
-<!-- Panel toggle -->
 <script>
+/* Panel toggle */
 function togglePanel(id) {
   document.getElementById(id).classList.toggle('collapsed');
 }
 
+/* Sidebar toggle */
 const sidebar = document.getElementById('sidebar');
 const handle = document.getElementById('sidebar-handle');
 
-// Click toggles sidebar open/closed
 handle.addEventListener('click', (e) => {
   sidebar.classList.toggle('sidebar-open');
   e.stopPropagation(); // prevent click from bubbling
 });
 </script>
-    
+
 </body>
-  
 </html>
