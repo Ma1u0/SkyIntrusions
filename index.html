@@ -103,21 +103,25 @@ html, body {
   transition: transform 0.3s ease;
 }
 
-/* Closed state */
-.sidebar-closed #sidebar-content {
-  transform: translateX(-100%);
+.sidebar-closed {
+  transform: translateX(-220px); /* sidebar width (250) - handle (~30) */
 }
 
 /* Hamburger handle */
 #sidebar-handle {
-  width: 32px;
-  background: #333;
-  color: white;
-  cursor: pointer;
-  font-size: 22px;
+  position: absolute;
+  right: -30px;
+  top: 20px;
+  width: 30px;
+  height: 40px;
+  background: white;
+  border-radius: 0 6px 6px 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  font-size: 20px;
 }
   
 </style>
