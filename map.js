@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }).setView([20, 0], 2);
 
 L.control.zoom({
-  position: 'bottomright' // or 'bottomleft'
+  position: 'bottomleft' // or 'bottomleft'
 }).addTo(map);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
