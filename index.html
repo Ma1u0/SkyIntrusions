@@ -102,17 +102,21 @@ html, body {
   top: 0;
   left: 0;
   height: 100%;
-  width: 250px; /* width of sidebar */
+  width: 250px;
+  display: flex;
   z-index: 1000;
-  transform: translateX(-220px); /* slide amount */
+  transform: translateX(-220px); /* closed */
   transition: transform 0.3s ease;
 }
 
-#sidebar.sidebar-open {
-  transform: translateX(0);
+#sidebar:hover {
+  transform: translateX(0); /* opens on hover */
 }
 
-/* Actual white panel */
+#sidebar.sidebar-open {
+  transform: translateX(0); /* opens on click */
+}
+
 #sidebar-content {
   width: 250px;
   height: 100%;
@@ -125,7 +129,7 @@ html, body {
 /* Hamburger handle */
 #sidebar-handle {
   position: absolute;
-  right: -30px; /* sticks out */
+  right: -30px; /* sticks out from the sidebar */
   top: 20px;
   width: 30px;
   height: 40px;
@@ -144,14 +148,14 @@ html, body {
 
 <body>
   
-<div id="sidebar" class="sidebar-closed">
-  <div id="sidebar-handle">&#9776;</div> <!-- the three lines / hamburger -->
+<div id="sidebar">
   <div id="sidebar-content">
     <h3>Statistics</h3>
     <div id="stats-per-month"></div>
     <div id="stats-per-country"></div>
     <div id="stats-per-incident"></div>
   </div>
+  <div id="sidebar-handle">&#9776;</div>
 </div>
 
 <div id="map"></div>
@@ -231,20 +235,15 @@ function togglePanel(id) {
   document.getElementById(id).classList.toggle('collapsed');
 }
 
-  document.getElementById('sidebar-handle').addEventListener('click', () => {
-  document.getElementById('sidebar').classList.toggle('sidebar-closed');
-});
-  
-</script>
-
-// Get the sidebar and the hamburger handle
 const sidebar = document.getElementById('sidebar');
 const handle = document.getElementById('sidebar-handle');
 
-// Toggle sidebar open/closed on click
-handle.addEventListener('click', () => {
+// Click toggles sidebar open/closed
+handle.addEventListener('click', (e) => {
   sidebar.classList.toggle('sidebar-open');
+  e.stopPropagation(); // prevent click from bubbling
 });
+</script>
     
 </body>
   
