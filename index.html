@@ -47,7 +47,6 @@ html, body {
 }
 
 .panel-content { padding: 8px; }
-
 .collapsed .panel-content { display: none; }
 
 /* Filters panel */
@@ -87,6 +86,10 @@ html, body {
   height: 40px;
 }
 
+#legend.collapsed .panel-content {
+  display: none;
+}
+
 .legend-row {
   margin-bottom: 6px;
 }
@@ -99,7 +102,7 @@ html, body {
 
 /* Sidebar */
 #sidebar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -122,9 +125,10 @@ html, body {
   padding: 12px;
 }
 
+/* Hamburger handle */
 #sidebar-handle {
-  position: absolute;
-  right: -30px;
+  position: fixed;
+  left: 0;
   top: 20px;
   width: 30px;
   height: 40px;
@@ -149,13 +153,13 @@ html, body {
     <p><a href="index.html">🗺️ Map</a></p>
     <p><a href="calendar.html">📅 Calendar</a></p>
   </div>
-  <div id="sidebar-handle">&#9776;</div>
 </div>
+<div id="sidebar-handle">&#9776;</div>
 
 <!-- Map -->
 <div id="map"></div>
 
-<!-- Filters Panel (SENTENCE STYLE) -->
+<!-- Filters Panel -->
 <div id="filters" class="panel collapsed">
   <div class="panel-header">
     <span>Filters</span>
@@ -164,9 +168,7 @@ html, body {
 
   <div class="panel-content">
     <div id="sentence-filters">
-
       <span>Show</span>
-
       <select id="f-actor">
         <option value="any">all actors</option>
         <option value="red">confirmed Russian</option>
@@ -185,7 +187,6 @@ html, body {
       </select>
 
       <span>at</span>
-
       <select id="f-location">
         <option value="any">any place</option>
         <option value="airports">airports</option>
@@ -195,7 +196,6 @@ html, body {
       </select>
 
       <span>in</span>
-
       <select id="f-month">
         <option value="any">any month</option>
         <option value="1">January</option>
@@ -217,7 +217,6 @@ html, body {
         <option value="2025">2025</option>
         <option value="2026">2026</option>
       </select>
-
     </div>
   </div>
 </div>
@@ -245,7 +244,7 @@ html, body {
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
-<!-- Your map logic -->
+<!-- Map JS -->
 <script src="map.js"></script>
 
 <script>
@@ -260,6 +259,41 @@ const handle = document.getElementById('sidebar-handle');
 handle.addEventListener('click', (e) => {
   sidebar.classList.toggle('sidebar-open');
   e.stopPropagation();
+});
+
+// Sentence filter logic
+function getSelectedFilters() {
+  return {
+    actor: document.getElementById('f-actor').value,
+    type: document.getElementById('f-type').value,
+    location: document.getElementById('f-location').value,
+    month: document.getElementById('f-month').value,
+    year: document.getElementById('f-year').value
+  };
+}
+
+function applyFilters() {
+  const filters = getSelectedFilters();
+
+  markers.forEach(markerObj => {
+    const match = markerObj.incidents.some(inc =>
+      (filters.actor === 'any' || markerObj.risk === filters.actor) &&
+      (filters.type === 'any' || markerObj.type === filters.type) &&
+      (filters.location === 'any' || markerObj.place === filters.location) &&
+      (filters.year === 'any' || inc.year === filters.year) &&
+      (filters.month === 'any' || inc.month === filters.month)
+    );
+
+    if (match) {
+      markerObj.leafletMarker.addTo(map);
+    } else {
+      map.removeLayer(markerObj.leafletMarker);
+    }
+  });
+}
+
+document.querySelectorAll('#sentence-filters select').forEach(sel => {
+  sel.addEventListener('change', applyFilters);
 });
 </script>
 
