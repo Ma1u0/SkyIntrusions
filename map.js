@@ -103,9 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
       link: "https://www.vrt.be/vrtnws/en/2025/10/29/drones-spotted-above-belgian-military-base/"
     }
   ],
-}
+},
 
-    {
+{
   lat: 50.23922,
   lng: 5.50552,
   icon: icons.droneOrange,
