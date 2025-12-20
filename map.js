@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
     date: '2025',
     details: "On September 10th, the Czech army reported an growing number of drone sightings over it's military bases; no further details were provided",
     link: "https://www.reuters.com/business/aerospace-defense/russias-suspected-hybrid-war-puts-european-air-defences-test-2025-11-05/",
-    country: "Czech Republic 🇨🇿AAAAAAAAAAAAAA"
+    country: "Czech Republic 🇨🇿"
   },
     
  /* =========================
