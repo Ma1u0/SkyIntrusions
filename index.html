@@ -13,14 +13,10 @@
 <style>
 html, body { margin:0; height:100%; }
 
-/* Map fills viewport */
+/* ✅ FIXED MAP CSS */
 #map { 
-  position:absolute; 
-  top:0; 
-  left:0; 
-  right:0; 
-  bottom:0; 
-  z-index:0; /* map behind everything */
+  height: 100vh; 
+  width: 100vw; 
 }
 
 /* Sidebar */
@@ -177,14 +173,13 @@ html, body { margin:0; height:100%; }
 <script>
 function togglePanel(id){document.getElementById(id).classList.toggle('collapsed');}
 
-// Sidebar toggle (we leave this as-is, map will still render)
+// Sidebar toggle
 const sidebar=document.getElementById('sidebar');
 const handle=document.getElementById('sidebar-handle');
 handle.addEventListener('click', e=>{
   sidebar.classList.toggle('sidebar-open'); 
   e.stopPropagation();
-  // Update map size after sidebar opens/closes
-  if(window.map) map.invalidateSize();
+  if(window.map) map.invalidateSize(); // ✅ safe now
 });
 </script>
 
