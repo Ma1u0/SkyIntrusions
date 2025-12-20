@@ -104,7 +104,7 @@ L.control.zoom({
   risk: 'orange',
   place: 'militarybases',
   year: '2025',
-  months: ['10', '11'],
+  month: ['10', '11'],
   country: "Florennes Air Base, Belgium 🇧🇪",
 
   note: "Florennes air base is home to Belgium's F-35 jets <br><br> The Belgian security service considers the drones in Belgium to be Russian",
@@ -140,7 +140,7 @@ L.control.zoom({
   risk: 'orange',
   place: 'militarybases',
   year: '2025',
-  months: '11',
+  month: '11',
   country: "Kleine-Brogel Air Base, Belgium 🇧🇪",
 
   note: "Kleine-Brogel is a NATO-used base and home to US nukes <br><br> The Belgian security service considers the drones in Belgium to be Russian",
@@ -455,7 +455,7 @@ L.control.zoom({
     risk: 'yellow',
     place: 'others',
     year: '2025',
-    months: '09',
+    month: '09',
     popupType: 'Drone sightings ', // shown in popup
     date: '2025',
     details: "On September 10th, the Czech army reported an growing number of drone sightings over it's military bases; no further details were provided",
@@ -494,7 +494,7 @@ L.control.zoom({
   risk: 'orange',
   place: 'airport',
   year: '2025',
-  months: ['09', '11'],
+  month: ['09', '11'],
   country: "Aalborg Airport, Denmark 🇩🇰",
 
   note: "Aalborg airport is both a publicly and militarily used airport <br><br> The Danish intelligence service considers these drones to be Russian",
@@ -1072,7 +1072,7 @@ L.control.zoom({
   risk: 'yellow',
   place: 'airport',
   year: '2025',
-  months: ['10', '11', '12'],  
+  month: ['10', '11', '12'],  
   country: "Vilnius Airport / Lithuanian-Belarusian border, Lithuania 🇱🇹",
 
   note: "List is scrollable due to too many incidents",
