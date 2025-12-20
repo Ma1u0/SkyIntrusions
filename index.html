@@ -17,7 +17,8 @@ html, body { margin:0; height:100%; }
 /* Sidebar */
 #sidebar {
   position: fixed;
-  top:0; left:0;
+  top:0;
+  left:0;
   height:100%;
   width:250px;
   background: rgba(255,255,255,0.97);
@@ -29,11 +30,13 @@ html, body { margin:0; height:100%; }
 #sidebar.sidebar-open { transform: translateX(0); }
 #sidebar-content { padding:12px; }
 
-/* Sidebar handle */
+/* Hamburger handle inside sidebar */
 #sidebar-handle {
   position: absolute;
-  right: -30px; top:20px;
-  width:30px; height:40px;
+  top:20px;
+  right:-30px; /* sticks outside the sidebar */
+  width:30px;
+  height:40px;
   background:white;
   border-radius:0 6px 6px 0;
   display:flex; align-items:center; justify-content:center;
@@ -161,63 +164,50 @@ html, body { margin:0; height:100%; }
   </div>
 </div>
 
-<!-- Leaflet -->
+<!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
+<!-- Your Map JS -->
+<script src="map.js"></script>
+
 <script>
-// Panels
+// Toggle panels
 function togglePanel(id){document.getElementById(id).classList.toggle('collapsed');}
 
 // Sidebar toggle
-const sidebar=document.getElementById('sidebar');
-const handle=document.getElementById('sidebar-handle');
-handle.addEventListener('click', e=>{
+const sidebar = document.getElementById('sidebar');
+const handle = document.getElementById('sidebar-handle');
+handle.addEventListener('click', e => {
   sidebar.classList.toggle('sidebar-open');
-  setTimeout(()=>{ map.invalidateSize(); }, 310); // recalc map after animation
   e.stopPropagation();
-});
-
-// Initialize map after DOM is ready
-let map;
-document.addEventListener('DOMContentLoaded', () => {
-  map = L.map('map').setView([0,0], 2);
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  // Example marker cluster
-  window.markers = [];
-  const example = L.marker([0,0]).bindPopup("Test Incident");
-  example.addTo(map);
-  markers.push({leafletMarker: example, incidents:[{year:'2025', month:'12'}], risk:'red', type:'drone', place:'airports'});
 });
 
 // Sentence filter logic
 function getSelectedFilters(){return{
-  actor:document.getElementById('f-actor').value,
-  type:document.getElementById('f-type').value,
-  location:document.getElementById('f-location').value,
-  month:document.getElementById('f-month').value,
-  year:document.getElementById('f-year').value
+  actor: document.getElementById('f-actor').value,
+  type: document.getElementById('f-type').value,
+  location: document.getElementById('f-location').value,
+  month: document.getElementById('f-month').value,
+  year: document.getElementById('f-year').value
 };}
 
 function applyFilters(){
-  const filters=getSelectedFilters();
-  markers.forEach(markerObj=>{
-    const match=markerObj.incidents.some(inc=>
-      (filters.actor==='any'||markerObj.risk===filters.actor)&&
-      (filters.type==='any'||markerObj.type===filters.type)&&
-      (filters.location==='any'||markerObj.place===filters.location)&&
-      (filters.year==='any'||inc.year===filters.year)&&
-      (filters.month==='any'||inc.month===filters.month)
+  const filters = getSelectedFilters();
+  markers.forEach(markerObj => {
+    const match = markerObj.incidents.some(inc =>
+      (filters.actor === 'any' || markerObj.risk === filters.actor) &&
+      (filters.type === 'any' || markerObj.type === filters.type) &&
+      (filters.location === 'any' || markerObj.place === filters.location) &&
+      (filters.year === 'any' || inc.year === filters.year) &&
+      (filters.month === 'any' || inc.month === filters.month)
     );
-    if(match){markerObj.leafletMarker.addTo(map);}else{map.removeLayer(markerObj.leafletMarker);}
+    if(match){ markerObj.leafletMarker.addTo(map); } 
+    else { map.removeLayer(markerObj.leafletMarker); }
   });
 }
 
-document.querySelectorAll('#sentence-filters select').forEach(sel=>{sel.addEventListener('change', applyFilters);});
+document.querySelectorAll('#sentence-filters select').forEach(sel => { sel.addEventListener('change', applyFilters); });
 </script>
 
 </body>
