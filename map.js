@@ -4,10 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------------
   const map = L.map('map', { zoomControl: false }).setView([20, 0], 2);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19
-  }).addTo(map);
-
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
   L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
   // ------------------------
@@ -66,20 +63,62 @@ document.addEventListener('DOMContentLoaded', () => {
       link: "https://www.hurriyet.com.tr/gundem/balikesirde-insansiz-hava-araci-dustu-inceleme-icin-ankaraya-gonderildi-43060797",
       country: "Manyas, Turkey 🇹🇷"
     },
-    // Add more incidents below using the same structure
+    {
+      lat: 50.23922,
+      lng: 5.50552,
+      icon: icons.droneOrange,
+      type: 'drone',
+      risk: 'orange',
+      place: 'militarybases',
+      year: '2025',
+      month: '10',
+      country: "Marche-en-Famenne Air Base, Belgium 🇧🇪",
+      note: "The Belgian security service considers the drones in Belgium to be Russian",
+      noteLink: "https://www.vrt.be/vrtnws/en/2025/11/05/belgian-security-services-convinced-russia-is-behind-the-drone-i/",
+      incidents: [
+        {
+          popupType: 'Drone sighting',
+          date: '25 Oct 2025, evening',
+          details: "Four to five drones, flying above critical areas of the base, were reported by soldiers",
+          link: "https://www.vrt.be/vrtnws/en/2025/10/29/drones-spotted-above-belgian-military-base/"
+        },
+        {
+          popupType: 'Drone sighting',
+          date: '28 Oct 2025',
+          details: "Several drones have been spotted over the air base",
+          link: "https://www.vrt.be/vrtnws/en/2025/10/29/drones-spotted-above-belgian-military-base/"
+        }
+      ]
+    }
   ];
 
   // ------------------------
-  // 6️⃣ Add markers to cluster
+  // 6️⃣ Add markers to cluster (handles multi-incidents)
   // ------------------------
   incidents.forEach(i => {
-    const popupHtml = `
-      <b>${i.link ? `<a href="${i.link}" target="_blank">${i.country}</a>` : i.country}</b><br>
-      <b>Type:</b> ${i.popupType}<br>
-      <b>Date:</b> ${i.date}<br>
-      <b>Details:</b> ${i.details}<br>
-      ${i.link ? `<a href="${i.link}" target="_blank">Source</a>` : ''}
-    `;
+    let popupHtml = `<b>${i.link ? `<a href="${i.link}" target="_blank">${i.country}</a>` : i.country}</b><br>`;
+    
+    if(i.note) {
+      popupHtml += `<em>${i.note}</em>`;
+      if(i.noteLink) popupHtml += ` <a href="${i.noteLink}" target="_blank">Source</a>`;
+      popupHtml += '<br><br>';
+    }
+
+    if(Array.isArray(i.incidents)) {
+      i.incidents.forEach((inc, idx) => {
+        popupHtml += `<b>Incident ${idx + 1}</b><br>
+                      <b>Type:</b> ${inc.popupType}<br>
+                      <b>Date:</b> ${inc.date}<br>
+                      <b>Details:</b> ${inc.details}<br>
+                      ${inc.link ? `<a href="${inc.link}" target="_blank">Source</a>` : ''}
+                      <hr>`;
+      });
+    } else {
+      popupHtml += `<b>Type:</b> ${i.popupType}<br>
+                    <b>Date:</b> ${i.date}<br>
+                    <b>Details:</b> ${i.details}<br>
+                    ${i.link ? `<a href="${i.link}" target="_blank">Source</a>` : ''}`;
+    }
 
     const marker = L.marker([i.lat, i.lng], { icon: i.icon }).bindPopup(popupHtml, {
       maxHeight: 300,
@@ -92,20 +131,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ------------------------
-  // 7️⃣ Filter logic (optional)
+  // 7️⃣ Filter logic
   // ------------------------
   function applyFilters() {
     markerCluster.clearLayers();
 
+    const fActor = document.getElementById('f-actor').value;
+    const fType = document.getElementById('f-type').value;
+    const fLocation = document.getElementById('f-location').value;
+    const fMonth = document.getElementById('f-month').value;
+    const fYear = document.getElementById('f-year').value;
+
     const visible = markers.filter(m => {
-      // Example: always show all for now
-      return true;
+      const { risk, type, place, month, year } = m.meta;
+
+      const matchActor = fActor === 'any' || risk === fActor;
+      const matchType = fType === 'any' || type === fType;
+      const matchPlace = fLocation === 'any' || place === fLocation;
+      const matchMonth = fMonth === 'any' || month === fMonth.padStart(2,'0');
+      const matchYear = fYear === 'any' || year === fYear;
+
+      return matchActor && matchType && matchPlace && matchMonth && matchYear;
     });
 
     markerCluster.addLayers(visible);
   }
 
- document.querySelectorAll('#filters select').forEach(sel => {
-  sel.addEventListener('change', applyFilters);
-});
+  // ------------------------
+  // 8️⃣ Attach event listeners to filters
+  // ------------------------
+  document.querySelectorAll('#filters select').forEach(sel => {
+    sel.addEventListener('change', applyFilters);
+  });
 });
