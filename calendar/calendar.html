@@ -2,136 +2,89 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Calendar - World Incident Map</title>
+<title>Incident Calendar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FullCalendar CSS -->
-<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
-
 <style>
-body, html {
-  margin: 0;
-  height: 100%;
-  font-family: sans-serif;
-}
-
-/* Sidebar */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100%;
-  background: #f9f9f9;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-  z-index: 1000;
-  overflow-y: auto;
-  transition: transform 0.3s ease;
-  transform: translateX(-220px); /* mostly hidden */
-  display: flex;
-  flex-direction: column;
-}
-
-/* Sidebar open class */
-#sidebar.sidebar-open {
-  transform: translateX(0);
-}
-
-/* Sidebar links */
-#sidebar-content a {
-  display: block;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: black;
-}
-
-/* Hamburger handle inside sidebar */
-#sidebar-handle {
-  position: absolute;
-  right: -30px; /* sticks out when closed */
-  top: 20px;
-  width: 30px;
-  height: 40px;
-  background: white;
-  border-radius: 0 6px 6px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
-  font-size: 20px;
-  z-index: 1001;
-}
-
-/* Main content adjusts when sidebar opens */
-#main-content {
-  margin-left: 30px; /* leave room for burger when closed */
-  padding: 20px;
-  transition: margin-left 0.3s ease;
-}
-
-#sidebar.sidebar-open ~ #main-content {
-  margin-left: 260px; /* sidebar width + spacing */
-}
-
-/* Calendar container */
-#calendar {
-  max-width: 900px;
-  margin: 20px auto;
-}
+  body { font-family: 'Oswald', sans-serif; margin:0; padding:0; display:flex; flex-direction:column; align-items:center; background:#f9f9f9; }
+  h1 { margin:20px 0; }
+  #calendar { display:grid; grid-template-columns:repeat(7, 1fr); gap:5px; max-width:600px; }
+  .day { padding:15px; background:white; text-align:center; border-radius:6px; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.2); }
+  .day:hover { background:#e0e0e0; }
+  .header { font-weight:bold; background:#ddd; }
+  #nav { margin:20px; }
+  #nav button { padding:5px 10px; font-size:16px; margin:0 10px; cursor:pointer; }
 </style>
 </head>
 <body>
 
-<!-- Sidebar -->
-<div id="sidebar">
-  <div id="sidebar-content">
-    <p><a href="index.html">🏠 Home</a></p>
-    <p><a href="calendar/calendar.html">📅 Calendar</a></p>
-  </div>
-  <div id="sidebar-handle">&#9776;</div>
+<h1 id="monthYear"></h1>
+
+<div id="nav">
+  <button id="prevMonth">◀ Prev</button>
+  <button id="nextMonth">Next ▶</button>
 </div>
 
-<!-- Main content -->
-<div id="main-content">
-  <h1>Calendar View</h1>
-  <div id="calendar"></div>
-</div>
-
-<!-- FullCalendar JS -->
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
+<div id="calendar"></div>
 
 <script>
-// Sidebar toggle
-const sidebar = document.getElementById('sidebar');
-const handle = document.getElementById('sidebar-handle');
+const calendarEl = document.getElementById('calendar');
+const monthYearEl = document.getElementById('monthYear');
+let currentDate = new Date(2025, 8, 1); // September 2025 (month is 0-indexed)
 
-handle.addEventListener('click', () => {
-  sidebar.classList.toggle('sidebar-open');
-});
-</script>
+const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const calendarEl = document.getElementById('calendar');
+function renderCalendar(date) {
+  calendarEl.innerHTML = '';
+  
+  monthYearEl.textContent = monthNames[date.getMonth()] + ' ' + date.getFullYear();
 
-  const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
-    initialDate: '2025-09-01',
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    },
-    events: [
-      { title: 'Drone Sighting', start: '2025-09-03' },
-      { title: 'Border Crossing', start: '2025-09-07' },
-      { title: 'Jet Activity', start: '2025-09-15' }
-    ]
+  // Add day headers
+  dayNames.forEach(day => {
+    const header = document.createElement('div');
+    header.className = 'day header';
+    header.textContent = day;
+    calendarEl.appendChild(header);
   });
 
-  calendar.render();
+  const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  const startDay = firstDay.getDay();
+
+  // Blank cells for first week
+  for(let i=0;i<startDay;i++){
+    const empty = document.createElement('div');
+    calendarEl.appendChild(empty);
+  }
+
+  // Days
+  for(let i=1;i<=lastDay.getDate();i++){
+    const dayEl = document.createElement('div');
+    dayEl.className = 'day';
+    dayEl.textContent = i;
+
+    // Optional: click event for each day
+    dayEl.addEventListener('click', () => {
+      alert(`Clicked on ${monthNames[date.getMonth()]} ${i}, ${date.getFullYear()}`);
+    });
+
+    calendarEl.appendChild(dayEl);
+  }
+}
+
+// Navigation
+document.getElementById('prevMonth').addEventListener('click', () => {
+  currentDate.setMonth(currentDate.getMonth() - 1);
+  renderCalendar(currentDate);
 });
+document.getElementById('nextMonth').addEventListener('click', () => {
+  currentDate.setMonth(currentDate.getMonth() + 1);
+  renderCalendar(currentDate);
+});
+
+// Initial render
+renderCalendar(currentDate);
 </script>
 
 </body>
