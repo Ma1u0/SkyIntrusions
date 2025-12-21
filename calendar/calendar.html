@@ -13,6 +13,7 @@ html, body {
   margin: 0;
   height: 100%;
   font-family: Oswald, sans-serif;
+  background: #f3f3f3;
 }
 
 /* =========================
@@ -67,18 +68,24 @@ html, body {
   transition: left 0.3s ease;
 }
 
-.sidebar-open + #sidebar-handle {
-  left: 250px;
-}
-
 /* =========================
-   CALENDAR
+   CENTERED CALENDAR
    ========================= */
-#calendar-container {
-  margin-left: 40px;
-  padding: 20px;
+#calendar-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
+#calendar-container {
+  background: white;
+  padding: 20px 24px 24px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* Header */
 #calendar-header {
   display: flex;
   align-items: center;
@@ -89,16 +96,19 @@ html, body {
 }
 
 #calendar-header button {
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
+  border: none;
+  background: none;
 }
 
+/* Grid */
 #calendar-grid {
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 6px;
-  max-width: 600px;
+  width: 600px;
 }
 
 /* Weekdays */
@@ -114,16 +124,15 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: default;
 }
 
 /* Incident colors */
 .day.single {
-  background: orange;
+  background: #f5d742; /* YELLOW (1 incident) */
 }
 
 .day.multi {
-  background: red;
+  background: #c62828; /* RED (multiple incidents) */
   color: white;
 }
 </style>
@@ -141,14 +150,16 @@ html, body {
 <div id="sidebar-handle">&#9776;</div>
 
 <!-- Calendar -->
-<div id="calendar-container">
-  <div id="calendar-header">
-    <button id="prevMonth">◀</button>
-    <div id="monthLabel"></div>
-    <button id="nextMonth">▶</button>
-  </div>
+<div id="calendar-wrapper">
+  <div id="calendar-container">
+    <div id="calendar-header">
+      <button id="prevMonth">◀</button>
+      <div id="monthLabel"></div>
+      <button id="nextMonth">▶</button>
+    </div>
 
-  <div id="calendar-grid"></div>
+    <div id="calendar-grid"></div>
+  </div>
 </div>
 
 <script>
@@ -159,8 +170,8 @@ const sidebar = document.getElementById('sidebar');
 const handle = document.getElementById('sidebar-handle');
 
 handle.addEventListener('click', () => {
-  sidebar.classList.toggle('sidebar-open');
-  handle.style.left = sidebar.classList.contains('sidebar-open') ? '250px' : '0';
+  const open = sidebar.classList.toggle('sidebar-open');
+  handle.style.left = open ? '250px' : '0';
 });
 
 /* =========================
@@ -180,19 +191,16 @@ let currentDate = new Date(2025, 8, 1); // September 2025
 
 const monthLabel = document.getElementById('monthLabel');
 const grid = document.getElementById('calendar-grid');
-
 const weekdays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 
 function renderCalendar() {
   grid.innerHTML = '';
 
-  // Month label
   monthLabel.textContent = currentDate.toLocaleString('en-US', {
     month: 'long',
     year: 'numeric'
   });
 
-  // Weekday headers
   weekdays.forEach(d => {
     const el = document.createElement('div');
     el.className = 'weekday';
@@ -207,12 +215,10 @@ function renderCalendar() {
   const startOffset = (firstDay.getDay() + 6) % 7;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  // Empty cells
   for (let i = 0; i < startOffset; i++) {
     grid.appendChild(document.createElement('div'));
   }
 
-  // Days
   for (let day = 1; day <= daysInMonth; day++) {
     const el = document.createElement('div');
     el.className = 'day';
@@ -220,12 +226,8 @@ function renderCalendar() {
 
     const key = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
 
-    if (incidentsByDate[key] === 1) {
-      el.classList.add('single');
-    }
-    if (incidentsByDate[key] > 1) {
-      el.classList.add('multi');
-    }
+    if (incidentsByDate[key] === 1) el.classList.add('single');
+    if (incidentsByDate[key] > 1) el.classList.add('multi');
 
     grid.appendChild(el);
   }
