@@ -1966,8 +1966,17 @@ function applyFilters() {
     const matchActor = fActor === 'any' || risk === fActor;
     const matchType = fType === 'any' || type === fType;
     const matchPlace = fLocation === 'any' || place === fLocation;
-    const matchMonth = fMonth === 'any' || 
-      (Array.isArray(month) ? month.includes(fMonth.padStart(2,'0')) : month === fMonth.padStart(2,'0'));
+
+    // handle month as string or array
+    let matchMonth = false;
+    if (fMonth === 'any') {
+      matchMonth = true;
+    } else if (Array.isArray(month)) {
+      matchMonth = month.includes(fMonth.padStart(2,'0'));
+    } else {
+      matchMonth = month === fMonth.padStart(2,'0');
+    }
+
     const matchYear = fYear === 'any' || year === fYear;
 
     return matchActor && matchType && matchPlace && matchMonth && matchYear;
