@@ -67,7 +67,6 @@ html, body {
   transition: left 0.3s ease;
 }
 
-/* Moves with sidebar */
 .sidebar-open + #sidebar-handle {
   left: 250px;
 }
@@ -78,14 +77,12 @@ html, body {
 #calendar-container {
   margin-left: 40px;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 #calendar-header {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
@@ -118,6 +115,7 @@ html, body {
 .weekday {
   text-align: center;
   font-weight: bold;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 /* Days */
@@ -128,7 +126,8 @@ html, body {
   align-items: center;
   justify-content: center;
   cursor: default;
-  transition: background 0.2s;
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
 }
 
 /* Incident colors */
@@ -209,13 +208,13 @@ months.forEach((m, i) => {
   monthSelect.appendChild(opt);
 });
 
-// Populate year dropdown
-for (let y = 2024; y <= 2030; y++) {
+// Limit year dropdown to 2025 and 2026
+[2025, 2026].forEach(y => {
   const opt = document.createElement('option');
   opt.value = y;
   opt.textContent = y;
   yearSelect.appendChild(opt);
-}
+});
 
 // Sync dropdowns
 function syncDropdowns() {
@@ -242,7 +241,7 @@ function renderCalendar() {
   const month = currentDate.getMonth();
 
   const firstDay = new Date(year, month, 1);
-  const startOffset = (firstDay.getDay() + 6) % 7;
+  const startOffset = (firstDay.getDay() + 6) % 7; // Monday start
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   // Empty cells
