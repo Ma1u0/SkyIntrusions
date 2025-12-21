@@ -321,22 +321,23 @@ function renderCalendar() {
     if(incidentsData[key]?.length === 1) el.classList.add('single');
     if(incidentsData[key]?.length > 1) el.classList.add('multi');
 
-    // Click handler to show incidents
-    el.addEventListener('click', () => {
-      const incidentsOnDay = incidentsData[key];
-      if(!incidentsOnDay){
-        incidentDisplay.innerHTML = '<i>No incidents on this day.</i>';
-        return;
-      }
-      incidentDisplay.innerHTML = incidentsOnDay.map(i => `
-        <div class="incident-item">
-          <b>${i.country}${i.link ? ` (<a href="${i.link}" target="_blank">source</a>)` : ''}</b>
-          <b>Date:</b> ${i.date}
-          <b>Type:</b> ${i.popupType}
-          <b>Details:</b> ${i.details}
-        </div>
-      `).join('');
-    });
+// Click handler to show incidents, including note/noteLink
+el.addEventListener('click', () => {
+  const incidentsOnDay = incidentsData[key];
+  if(!incidentsOnDay){
+    incidentDisplay.innerHTML = '<i>No incidents on this day.</i>';
+    return;
+  }
+  incidentDisplay.innerHTML = incidentsOnDay.map(i => `
+    <div class="incident-item">
+      <b>${i.country}${i.link ? ` (<a href="${i.link}" target="_blank">source</a>)` : ''}</b>
+      <b>Date:</b> ${i.date}<br>
+      <b>Type:</b> ${i.popupType}<br>
+      <b>Details:</b> ${i.details}<br>
+      ${i.note ? `<b>Note:</b> ${i.note} ${i.noteLink ? `<a href="${i.noteLink}" target="_blank">source</a>` : ''}` : ''}
+    </div>
+  `).join('');
+});
 
     grid.appendChild(el);
   }
