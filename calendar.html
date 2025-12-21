@@ -32,9 +32,13 @@ html, body {
   font-family: 'Fjalla One', sans-serif;
 }
 
-#sidebar.sidebar-open { transform: translateX(0); }
+#sidebar.sidebar-open {
+  transform: translateX(0);
+}
 
-#sidebar-content { padding: 20px; }
+#sidebar-content {
+  padding: 20px;
+}
 
 #sidebar a {
   display: block;
@@ -63,8 +67,9 @@ html, body {
   transition: left 0.3s ease;
 }
 
-/* Move burger when sidebar is open */
-.sidebar-open + #sidebar-handle { left: 250px; }
+.sidebar-open + #sidebar-handle {
+  left: 250px;
+}
 
 /* =========================
    CALENDAR
@@ -72,51 +77,65 @@ html, body {
 #calendar-container {
   display: flex;
   justify-content: center;
-  padding: 40px;
+  align-items: flex-start;
+  height: 100%;
+  padding: 20px;
 }
 
 #calendar {
-  display: inline-block;
   text-align: center;
 }
 
 #calendar-header {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 20px;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
-  margin-bottom: 20px;
 }
 
-#calendar-header select, #calendar-header button {
+#calendar-header button {
   font-size: 20px;
   cursor: pointer;
 }
 
 #calendar-grid {
+  margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(7, 60px);
+  grid-template-columns: repeat(7, 1fr);
   gap: 6px;
+  max-width: 600px;
 }
 
+/* Weekdays */
 .weekday {
+  text-align: center;
   font-weight: bold;
 }
 
+/* Days */
 .day {
   height: 60px;
   border: 1px solid #ccc;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  cursor: default;
 }
 
-.day.single { background: yellow; }
-.day.multi { background: red; color: white; }
+/* Incident colors */
+.day.single {
+  background: yellow;
+}
+
+.day.multi {
+  background: red;
+  color: white;
+}
 </style>
 </head>
+
 <body>
 
 <!-- Sidebar -->
@@ -134,10 +153,7 @@ html, body {
     <div id="calendar-header">
       <button id="prevMonth">◀</button>
       <select id="monthSelect"></select>
-      <select id="yearSelect">
-        <option value="2025">2025</option>
-        <option value="2026">2026</option>
-      </select>
+      <select id="yearSelect"></select>
       <button id="nextMonth">▶</button>
     </div>
     <div id="calendar-grid"></div>
@@ -159,39 +175,53 @@ handle.addEventListener('click', () => {
    INCIDENT DATA
    ========================= */
 const incidentsByDate = {
-  '2025-09-10': 1,
-  '2025-09-15': 2,
-  '2025-10-05': 1,
-  '2025-12-20': 3
+  '2025-09-15': 1,
+  '2025-09-18': 3,
+  '2025-10-10': 2,
+  '2025-12-20': 1
 };
 
 /* =========================
    CALENDAR LOGIC
    ========================= */
-const weekdays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const grid = document.getElementById('calendar-grid');
 const monthSelect = document.getElementById('monthSelect');
 const yearSelect = document.getElementById('yearSelect');
-const grid = document.getElementById('calendar-grid');
+const prevBtn = document.getElementById('prevMonth');
+const nextBtn = document.getElementById('nextMonth');
+const weekdays = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+// Available years and months
+const years = [2025, 2026];
+const months = [
+  'January','February','March','April','May','June','July','August','September','October','November','December'
+];
 
 let currentYear = 2025;
-let currentMonth = 8; // September
+let currentMonth = 8; // September 2025
 
-// Populate month select
-const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-function updateMonthOptions() {
-  monthSelect.innerHTML = '';
-  const start = (currentYear===2025)?8:0; // disable months before Sept in 2025
-  for (let i=start; i<12; i++) {
-    const opt = document.createElement('option');
-    opt.value = i;
-    opt.textContent = monthNames[i];
-    if (i===currentMonth) opt.selected = true;
-    monthSelect.appendChild(opt);
-  }
+// Populate selects
+months.forEach((m,i)=> {
+  const option = document.createElement('option');
+  option.value = i;
+  option.textContent = m;
+  monthSelect.appendChild(option);
+});
+years.forEach(y=> {
+  const option = document.createElement('option');
+  option.value = y;
+  option.textContent = y;
+  yearSelect.appendChild(option);
+});
+
+monthSelect.value = currentMonth;
+yearSelect.value = currentYear;
+
+function updateNavButtons() {
+  prevBtn.disabled = (currentYear === 2025 && currentMonth === 8);
+  nextBtn.disabled = (currentYear === 2026 && currentMonth === 11);
 }
-updateMonthOptions();
 
-// Render calendar
 function renderCalendar() {
   grid.innerHTML = '';
 
@@ -203,13 +233,15 @@ function renderCalendar() {
     grid.appendChild(el);
   });
 
+  // Determine first day
   const firstDay = new Date(currentYear, currentMonth, 1);
-  const startOffset = (firstDay.getDay() + 6) % 7; // Mon=0
-  const daysInMonth = new Date(currentYear, currentMonth+1,0).getDate();
+  const startOffset = (firstDay.getDay() + 6) % 7; // Monday=0
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
   // Empty cells
   for (let i=0;i<startOffset;i++) grid.appendChild(document.createElement('div'));
 
+  // Days
   for (let day=1;day<=daysInMonth;day++) {
     const el = document.createElement('div');
     el.className = 'day';
@@ -221,34 +253,38 @@ function renderCalendar() {
 
     grid.appendChild(el);
   }
+
+  monthSelect.value = currentMonth;
+  yearSelect.value = currentYear;
+  updateNavButtons();
 }
 
-renderCalendar();
+// Event listeners
+prevBtn.onclick = () => {
+  if (!(currentYear===2025 && currentMonth===8)) {
+    currentMonth--;
+    if (currentMonth<0) { currentMonth=11; currentYear--; }
+    renderCalendar();
+  }
+};
+nextBtn.onclick = () => {
+  if (!(currentYear===2026 && currentMonth===11)) {
+    currentMonth++;
+    if (currentMonth>11){ currentMonth=0; currentYear++; }
+    renderCalendar();
+  }
+};
 
-// Navigation
-document.getElementById('prevMonth').addEventListener('click', ()=> {
-  if (currentMonth>0) currentMonth--;
-  else { currentMonth=11; currentYear--; }
-  if (currentYear<2025) currentYear=2025;
-  updateMonthOptions();
+monthSelect.onchange = () => {
+  currentMonth = parseInt(monthSelect.value);
   renderCalendar();
-});
-document.getElementById('nextMonth').addEventListener('click', ()=> {
-  if (currentMonth<11) currentMonth++;
-  else { currentMonth=0; currentYear++; }
-  if (currentYear>2026) currentYear=2026;
-  updateMonthOptions();
+};
+yearSelect.onchange = () => {
+  currentYear = parseInt(yearSelect.value);
   renderCalendar();
-});
-monthSelect.addEventListener('change', e=>{
-  currentMonth = parseInt(e.target.value);
-  renderCalendar();
-});
-yearSelect.addEventListener('change', e=>{
-  currentYear = parseInt(e.target.value);
-  updateMonthOptions();
-  renderCalendar();
-});
+};
+
+renderCalendar();
 </script>
 
 </body>
