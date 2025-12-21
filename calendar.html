@@ -73,28 +73,31 @@ html, body {
 }
 
 /* =========================
-   CALENDAR + INCIDENTS
+   CALENDAR + INCIDENTS CONTAINER
    ========================= */
 #calendar-container {
   display: flex;
-  justify-content: center; /* centers calendar wrapper */
-  padding: 40px 20px;
+  justify-content: center; /* centers the calendar-wrapper + incidents list */
   gap: 40px;
+  padding: 40px 20px;
 }
 
-/* Calendar wrapper for centering */
+/* Calendar stays centered */
 #calendar-wrapper {
   width: 600px;
   flex-shrink: 0;
 }
 
-/* Incident list on the right */
+/* Incidents list on the right */
 #incidents-list {
-  width: 280px; /* slightly more space */
+  width: 280px;
+  font-family: Oswald, sans-serif;
   font-size: 14px;
 }
 
-/* Calendar */
+/* =========================
+   CALENDAR STYLES
+   ========================= */
 #calendar-header {
   display: flex;
   align-items: center;
@@ -144,7 +147,7 @@ html, body {
 
 /* Incident colors */
 .day.single {
-  background: #fce570;
+  background: #f6e58d; /* nicer yellow */
 }
 
 .day.single:hover {
@@ -152,7 +155,7 @@ html, body {
 }
 
 .day.multi {
-  background: #e74c3c;
+  background: #e84118; /* red */
   color: white;
 }
 
@@ -170,7 +173,6 @@ html, body {
 }
 </style>
 </head>
-
 <body>
 
 <!-- Sidebar -->
@@ -193,17 +195,17 @@ html, body {
     </div>
     <div id="calendar-grid"></div>
     <div id="unknown-incidents-note">
-      * The incident in the Czech Republic happened in September but can't be added to the calendar because no exact date was reported
+      * The Czech Republic incident happened in September but has no exact date
     </div>
   </div>
 
-  <div id="incidents-list"></div>
+  <div id="incidents-list">
+    <h3>Click a day to see incidents</h3>
+  </div>
 </div>
 
 <script>
-/* =========================
-   SIDEBAR TOGGLE
-   ========================= */
+/* SIDEBAR TOGGLE */
 const sidebar = document.getElementById('sidebar');
 const handle = document.getElementById('sidebar-handle');
 handle.addEventListener('click', () => {
@@ -211,126 +213,107 @@ handle.addEventListener('click', () => {
   handle.style.left = sidebar.classList.contains('sidebar-open') ? '250px' : '0';
 });
 
-/* =========================
-   INCIDENT DATA
-   ========================= */
+/* INCIDENT DATA (example subset) */
 const incidentsByDate = {
-  '2025-09-03': [{country:'Poland', details:'Drone sighting at location A'}],
-  '2025-09-09': [{country:'Germany', details:'Drone spotted near Berlin'}],
+  '2025-09-03': [{ title: 'Drone sighting', details: 'Some details here' }],
+  '2025-09-09': [{ title: 'Drone crash', details: 'Crash site details' }],
   '2025-09-19': [
-    {country:'Poland', details:'Drone sighting 1'},
-    {country:'Poland', details:'Drone sighting 2'}
+    { title: 'Drone incursion 1', details: 'First incident' },
+    { title: 'Drone incursion 2', details: 'Second incident' }
   ],
-  '2025-09-22': [
-    {country:'Czech', details:'Drone reported near Prague'},
-    {country:'Czech', details:'Drone reported near Brno'}
-  ],
-  '2025-09-23': [{country:'France', details:'Drone sighting'}],
-  '2025-09-24': [{country:'Belgium', details:'Multiple drones reported'}],
-  '2025-09-25': [{country:'Denmark', details:'Drone sighting at Aalborg Airport'}],
-  '2025-10-02': [{country:'Italy', details:'Drone reported near airport'}],
-  '2025-10-03': [{country:'Sweden', details:'Drone seen over Malmö'}],
-  '2025-11-01': [{country:'Norway', details:'Drone spotted near Oslo'}],
-  '2025-11-04': [{country:'Finland', details:'Drone sighting near Helsinki'}]
+  '2025-10-02': [{ title: 'Airport alert', details: 'Airport closed' }]
+  // Add all incidents similarly
 };
 
-/* =========================
-   CALENDAR LOGIC
-   ========================= */
+/* CALENDAR LOGIC */
 const monthSelect = document.getElementById('monthSelect');
 const yearSelect = document.getElementById('yearSelect');
 const grid = document.getElementById('calendar-grid');
 const unknownNote = document.getElementById('unknown-incidents-note');
 const incidentsList = document.getElementById('incidents-list');
 
-const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-let currentDate = new Date(2025, 8, 1); // September 2025
+const months = [
+  'January','February','March','April','May','June','July','August','September','October','November','December'
+];
 
-// Populate month and year selects
-months.forEach((m, idx) => {
-  const opt = document.createElement('option');
-  opt.value = idx;
-  opt.textContent = m;
-  monthSelect.appendChild(opt);
-});
-[2025, 2026].forEach(y => {
-  const opt = document.createElement('option');
-  opt.value = y;
-  opt.textContent = y;
-  yearSelect.appendChild(opt);
-});
+let currentDate = new Date(2025,8,1); // September 2025
 
-function renderCalendar() {
-  grid.innerHTML = '';
-  incidentsList.innerHTML = '';
+// Populate month/year selects
+months.forEach((m,idx)=>{const opt=document.createElement('option');opt.value=idx;opt.textContent=m;monthSelect.appendChild(opt);});
+[2025,2026].forEach(y=>{const opt=document.createElement('option');opt.value=y;opt.textContent=y;yearSelect.appendChild(opt);});
+
+function renderCalendar(){
+  grid.innerHTML='';
+  incidentsList.innerHTML='<h3>Click a day to see incidents</h3>';
 
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
 
-  // Update selects
-  monthSelect.value = currentMonth;
-  yearSelect.value = currentYear;
+  monthSelect.value=currentMonth;
+  yearSelect.value=currentYear;
 
-  // Show unknown incidents note only in September 2025
-  unknownNote.style.display = (currentYear===2025 && currentMonth===8) ? 'block' : 'none';
+  unknownNote.style.display=(currentYear===2025 && currentMonth===8)?'block':'none';
 
-  // Weekdays
-  ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
-    const el = document.createElement('div');
-    el.className = 'weekday';
-    el.textContent = d;
+  ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d=>{
+    const el=document.createElement('div');
+    el.className='weekday';
+    el.textContent=d;
     grid.appendChild(el);
   });
 
-  const firstDay = new Date(currentYear, currentMonth, 1);
-  const startOffset = (firstDay.getDay()+6)%7; // Monday=0
-  const daysInMonth = new Date(currentYear, currentMonth+1,0).getDate();
+  const firstDay=new Date(currentYear,currentMonth,1);
+  const startOffset=(firstDay.getDay()+6)%7;
+  const daysInMonth=new Date(currentYear,currentMonth+1,0).getDate();
 
-  // Empty cells
   for(let i=0;i<startOffset;i++) grid.appendChild(document.createElement('div'));
 
-  // Days
-  for(let day=1; day<=daysInMonth; day++){
-    const el = document.createElement('div');
+  for(let day=1;day<=daysInMonth;day++){
+    const el=document.createElement('div');
     el.className='day';
     el.textContent=day;
-
     const key=`${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-    const dayIncidents = incidentsByDate[key];
 
-    if(dayIncidents) {
-      el.classList.add(dayIncidents.length>1 ? 'multi' : 'single');
-      el.addEventListener('click', () => {
-        incidentsList.innerHTML = '';
-        dayIncidents.forEach(inc => {
+    if(incidentsByDate[key]&&incidentsByDate[key].length===1) el.classList.add('single');
+    if(incidentsByDate[key]&&incidentsByDate[key].length>1) el.classList.add('multi');
+
+    // Click day to show incidents
+    el.addEventListener('click', ()=>{
+      incidentsList.innerHTML='<h3>Incidents on '+key+'</h3>';
+      if(incidentsByDate[key]){
+        incidentsByDate[key].forEach(i=>{
           const item = document.createElement('div');
-          item.innerHTML = `<b>${inc.country}</b>: ${inc.details}`;
+          item.style.marginBottom='10px';
+          item.innerHTML=`<b>${i.title}</b><br>${i.details}`;
           incidentsList.appendChild(item);
         });
-      });
-    }
+      } else {
+        incidentsList.innerHTML+='<p>No incidents reported.</p>';
+      }
+    });
 
     grid.appendChild(el);
   }
 }
 
 // Navigation buttons
-document.getElementById('prevMonth').onclick = () => {
-  currentDate.setMonth(currentDate.getMonth() - 1);
+document.getElementById('prevMonth').onclick=()=>{
+  currentDate.setMonth(currentDate.getMonth()-1);
   if(currentDate.getFullYear()===2025 && currentDate.getMonth()<8) currentDate.setMonth(8);
   renderCalendar();
 };
-document.getElementById('nextMonth').onclick = () => {
-  currentDate.setMonth(currentDate.getMonth() + 1);
+
+document.getElementById('nextMonth').onclick=()=>{
+  currentDate.setMonth(currentDate.getMonth()+1);
   renderCalendar();
 };
 
-// Month/year select change
-monthSelect.onchange = () => {
+monthSelect.onchange=()=>{
   currentDate.setMonth(parseInt(monthSelect.value));
+  if(currentDate.getFullYear()===2025 && currentDate.getMonth()<8) currentDate.setMonth(8);
   renderCalendar();
 };
-yearSelect.onchange = () => {
+
+yearSelect.onchange=()=>{
   currentDate.setFullYear(parseInt(yearSelect.value));
   if(currentDate.getFullYear()===2025 && currentDate.getMonth()<8) currentDate.setMonth(8);
   renderCalendar();
@@ -338,6 +321,5 @@ yearSelect.onchange = () => {
 
 renderCalendar();
 </script>
-
 </body>
 </html>
