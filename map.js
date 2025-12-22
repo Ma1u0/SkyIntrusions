@@ -684,8 +684,6 @@ document.addEventListener('DOMContentLoaded', () => {
     details: "The police responded to reports of drones over the Port of Korsør; no further information published since then",
     link: "https://x.com/ssj_lfpoliti/status/1971177421018890658?s=61",
     country: "Port of Korsør, Denmark 🇩🇰",
-    note: "The Danish intelligence service considers these drones to be Russian",
-    noteLink: "https://www.npr.org/2025/10/03/nx-s1-5561990/denmark-russia-drones-hybrid-war"
   },
     
  /* =========================
