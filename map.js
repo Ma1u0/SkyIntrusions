@@ -824,9 +824,10 @@ document.addEventListener('DOMContentLoaded', () => {
     popupType: 'Drone sighting ', // shown in popup
     date: ' 04 Dec 2025, 19:30 ',
     details: "Five drones were spotted over the base with the help of anti drone systems; the stationed battalion shot at the drones",
-    link: "https://www.lemonde.fr/societe/article/2025/11/12/mulhouse-enquete-ouverte-apres-le-survol-d-un-convoi-de-chars-leclerc_6653159_3224.html",
+    link: "https://www.lemonde.fr/en/france/article/2025/12/05/france-takes-anti-drone-measures-after-flight-over-nuclear-sub-base_6748188_7.html",
     country: "Île Longue, France 🇫🇷",
-    note: "Île Longue is home to French nuclear ballistic missile submarines",
+    note: "Île Longue is home to four French nuclear ballistic missile submarines",
+    note_Link: "https://www.lemonde.fr/en/france/article/2025/12/05/france-takes-anti-drone-measures-after-flight-over-nuclear-sub-base_6748188_7.html"
   },
     
      /* =========================
@@ -1197,7 +1198,7 @@ document.addEventListener('DOMContentLoaded', () => {
   month: '11',
   country: "Volkel Air Base, Netherlands 🇳🇱",
 
-  note: "Volkel is is believed to be home to Dutch F-35 jets and US nuclear weapons",
+  note: "Volkel is believed to be home to Dutch F-35 jets and US nuclear weapons",
 
   incidents: [
     {
