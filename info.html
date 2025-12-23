@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Info</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Bebas+Neue&family=Oswald&display=swap" rel="stylesheet">
+
+<style>
+html, body {
+  margin: 0;
+  font-family: Oswald, sans-serif;
+  background: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* Sidebar same style as main site */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.25);
+  z-index: 1000;
+  font-family: 'Fjalla One', sans-serif;
+  padding-top: 20px;
+}
+
+#sidebar-content a {
+  display: block;
+  margin-bottom: 12px;
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+#sidebar-handle {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 32px;
+  height: 42px;
+  background: white;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  font-size: 22px;
+  z-index: 1001;
+}
+
+/* Info content */
+#info-container {
+  margin-left: 270px;
+  padding: 40px 20px;
+  max-width: 900px;
+}
+
+h1, h2 {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+p {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+ul {
+  margin-left: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="sidebar">
+  <div id="sidebar-content">
+    <a href="index.html">🗺️ Map</a>
+    <a href="calendar.html">📅 Calendar</a>
+    <a href="info.html">ℹ️ Info</a>
+  </div>
+</div>
+<div id="sidebar-handle">&#9776;</div>
+
+<div id="info-container">
+  <h1>Information</h1>
+  
+  <h2>About the Incidents</h2>
+  <p>This calendar tracks drone, balloon, and aircraft sightings in Europe, with a focus on incidents involving Russian activity.</p>
+  
+  <h2>Color Codes</h2>
+  <ul>
+    <li>🟥 Single incident</li>
+    <li>🟨 Multiple incidents</li>
+    <li>🔴 Actor confirmed to be Russian</li>
+    <li>🟠 Actor suspected to be Russian</li>
+    <li>🟡 Actor unknown</li>
+    <li>🟢 Sighting unverified</li>
+  </ul>
+
+  <h2>Icons</h2>
+  <p>The calendar uses icons to quickly indicate the type of incident:</p>
+  <ul>
+    <li>🛸 Drone</li>
+    <li>✈️ Jet / aircraft</li>
+    <li>🎈 Balloon</li>
+    <li>🪖 Border / military</li>
+  </ul>
+
+  <h2>Sources</h2>
+  <p>All incidents are sourced from publicly available media reports and security services.</p>
+  
+  <h2>Notes</h2>
+  <p>Times, locations, and actor confirmation are based on available information and may be subject to updates.</p>
+</div>
+
+<script>
+/* =========================
+   SIDEBAR TOGGLE
+========================= */
+const sidebar = document.getElementById('sidebar');
+const handle = document.getElementById('sidebar-handle');
+const container = document.getElementById('info-container');
+let sidebarOpen = true;
+
+handle.addEventListener('click', () => {
+  sidebarOpen = !sidebarOpen;
+  if(sidebarOpen){
+    sidebar.style.transform = 'translateX(0)';
+    handle.style.transform = 'translateX(250px)';
+    container.style.marginLeft = '270px';
+  } else {
+    sidebar.style.transform = 'translateX(-250px)';
+    handle.style.transform = 'translateX(0)';
+    container.style.marginLeft = '20px';
+  }
+});
+</script>
+
+</body>
+</html>
