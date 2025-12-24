@@ -11,6 +11,7 @@
 <style>
 html, body {
   margin: 0;
+  padding: 0;
   height: 100%;
   font-family: Oswald, sans-serif;
   background: #f9f9f9;
@@ -25,7 +26,7 @@ html, body {
   left: 0;
   width: 250px;
   height: 100%;
-  background: #fff;
+  background: #ffffff;
   box-shadow: 2px 0 10px rgba(0,0,0,0.25);
   transform: translateX(-250px); /* CLOSED BY DEFAULT */
   transition: transform 0.3s ease;
@@ -34,7 +35,7 @@ html, body {
 }
 
 #sidebar-content {
-  padding: 30px 20px; /* fixed spacing */
+  padding: 25px;
 }
 
 #sidebar a {
@@ -52,8 +53,8 @@ html, body {
   position: fixed;
   top: 20px;
   left: 0;
-  width: 32px;
-  height: 42px;
+  width: 34px;
+  height: 44px;
   background: white;
   border-radius: 0 6px 6px 0;
   display: flex;
@@ -71,33 +72,27 @@ html, body {
    ========================= */
 #content {
   max-width: 900px;
-  margin: 60px auto;
+  margin: 80px auto;
   padding: 0 20px;
-  transition: margin-left 0.3s ease;
 }
 
 h1 {
   font-family: 'Fjalla One', sans-serif;
-  font-size: 36px;
+  font-size: 34px;
   margin-bottom: 10px;
 }
 
 h2 {
   margin-top: 40px;
-  font-size: 24px;
 }
 
 p {
-  font-size: 17px;
   line-height: 1.6;
+  margin-bottom: 12px;
 }
 
-.note {
-  background: #fff;
-  padding: 16px;
-  border-left: 5px solid #e03b3b;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin-top: 20px;
+ul {
+  margin-left: 20px;
 }
 </style>
 </head>
@@ -109,72 +104,65 @@ p {
   <div id="sidebar-content">
     <a href="index.html">🗺️ Map</a>
     <a href="calendar.html">📅 Calendar</a>
-    <a href="info.html">ℹ️ Information</a>
+    <a href="info.html">ℹ️ Info</a>
   </div>
 </div>
 
 <!-- BURGER -->
 <div id="sidebar-handle">&#9776;</div>
 
-<!-- MAIN CONTENT -->
+<!-- CONTENT -->
 <div id="content">
-  <h1>Information</h1>
-
+  <h1>About This Project</h1>
   <p>
-    This project tracks aerial and border-related incidents across Europe,
-    including drone sightings, airspace incursions, balloon events, and
-    suspected hybrid activities.
+    This project documents drone sightings, airspace violations, balloon incidents,
+    and related security events across Europe.
   </p>
 
   <h2>What is counted as an incident?</h2>
-  <p>
-    An incident represents a single event or operational episode.
-    If multiple sightings are part of the same event (for example,
-    the same drone observed in multiple locations), they may be grouped
-    together.
-  </p>
+  <ul>
+    <li>Confirmed drone incursions</li>
+    <li>Suspected drone sightings</li>
+    <li>Balloon-related airspace disruptions</li>
+    <li>Border or airspace violations</li>
+  </ul>
 
-  <h2>Confirmation status</h2>
+  <h2>Confirmation levels</h2>
   <p>
-    Incidents are included regardless of confirmation level.
-    Visual markers and colors indicate whether attribution is confirmed,
-    suspected, unknown, or unverified.
+    Incidents are marked based on available reporting:
   </p>
-
-  <div class="note">
-    Some contextual details (e.g. military usage of bases) are included
-    without explicit sourcing when they are widely accepted facts.
-    Attribution claims are always sourced.
-  </div>
+  <ul>
+    <li>🔴 Confirmed Russian involvement</li>
+    <li>🟠 Suspected Russian involvement</li>
+    <li>🟡 Actor unknown</li>
+    <li>🟢 Unverified sighting</li>
+  </ul>
 
   <h2>Sources</h2>
   <p>
-    Sources include national media, public broadcasters, international
-    news agencies, and official airport or government statements.
+    Sources include national media, official statements, and international outlets
+    such as Reuters. Some background facts are widely accepted and not individually sourced.
   </p>
 </div>
 
 <script>
 /* =========================
-   SIDEBAR LOGIC (CLEAN)
+   SIDEBAR LOGIC (CORRECT)
    ========================= */
 const sidebar = document.getElementById('sidebar');
 const handle = document.getElementById('sidebar-handle');
-const content = document.getElementById('content');
 
 let sidebarOpen = false;
 
 function openSidebar() {
   sidebar.style.transform = 'translateX(0)';
   handle.style.transform = 'translateX(250px)';
-  content.style.marginLeft = '250px';
   sidebarOpen = true;
 }
 
 function closeSidebar() {
   sidebar.style.transform = 'translateX(-250px)';
   handle.style.transform = 'translateX(0)';
-  content.style.marginLeft = '0';
   sidebarOpen = false;
 }
 
