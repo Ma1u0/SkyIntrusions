@@ -266,7 +266,7 @@ function getIncidentTypes(incidents) {
   incidents.forEach(i => {
     const t = i.popupType.toLowerCase();
     if(t.includes('drone')) types.add('drone');
-    if(t.includes('jet') || t.includes('airspace')) types.add('jet');
+    if(t.includes('jet') || t.includes('airspace incursion'));
     if(t.includes('balloon')) types.add('balloon');
     if(t.includes('border')) types.add('border');
   });
