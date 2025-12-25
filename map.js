@@ -1684,6 +1684,23 @@ document.addEventListener('DOMContentLoaded', () => {
     country: "Petrobaltic platform, Poland 🇵🇱",
     note: "This was not a violation of Polish airspace but a violation of the safety zone of the platform",
   },
+  {
+    lat: 53.26685,
+    lng: 22.85258,
+    icon: icons.balloonYellow,
+    type: 'balloon',      // used for filtering
+    risk: 'yellow',
+    place: 'others',
+    year: '2025',
+    month: '12',
+    popupType: 'Weather balloons / Smuggle balloons / Airspace closure ', // shown in popup
+    date: ' 24 Dec 2025, 20:08 - 04:30',
+    details: "Balloons, most probably smuggler balloons, entered Polish airspace from Belarus <br><br> On the morning of Dec 25, Polish Airforce escorted an Russian reconnaissance plane flying close to Polish borders. The plane did not enter Polish airspace and such flights are an regular occurrence",
+    link: "https://www.polsatnews.pl/wiadomosc/2025-12-25/dowodztwo-operacyjne-informuje-o-incydentach-rosyjski-samolot-przechwycony/",
+    country: "Eastern Poland, Poland 🇵🇱",
+    note: "Source for the time:",
+    noteLink: "https://x.com/PANSA_PL/status/2004141048017330265?s=20"
+  },
     
      /* =========================
        R O M A N I A
