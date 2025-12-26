@@ -78,7 +78,6 @@ html, body { margin:0; height:100%; }
   background:white;
   border-radius:6px;
   box-shadow:0 2px 10px rgba(0,0,0,0.3);
-  font-family:sans-serif;
   z-index:1000;
 }
 
@@ -118,24 +117,26 @@ html, body { margin:0; height:100%; }
 .legend-row { margin-bottom:6px; }
 .legend-row img { width:26px; vertical-align:middle; margin-right:6px; }
 
-/* === POPUPS: original Leaflet look === */
+/* === Leaflet Popups: ORIGINAL STYLE === */
 .leaflet-popup-content-wrapper {
-  padding: 6px 8px; /* original padding */
-  max-width: 200px; /* slightly narrower */
+  padding: 6px 8px; /* classic padding */
+  border-radius: 6px; /* rounded corners */
+  min-width: 180px;
+  max-width: 220px;
 }
 
 .leaflet-popup-content {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.4;
 }
 
 .leaflet-popup-content b {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .leaflet-popup-tip {
-  background: white; /* classic pointer */
+  background: white;
 }
 </style>
 </head>
@@ -227,7 +228,7 @@ html, body { margin:0; height:100%; }
     <div class="legend-row"><img src="icons/fighter-plane.png"> Jet</div>
     <div class="legend-row"><img src="icons/balloon.png"> Balloon</div>
     <div class="legend-row"><img src="icons/soldier.png"> Ground Border Crossing</div>
-    <div class="legend-row">🔴 lelelellele Actor confirmed to be Russian</div>
+    <div class="legend-row">🔴 Actor confirmed to be Russian</div>
     <div class="legend-row">🟠 Actor suspected to be Russian</div>
     <div class="legend-row">🟡 Unknown actor</div>
     <div class="legend-row">🟢 Unverified incident</div>
@@ -247,7 +248,6 @@ function togglePanel(id){
   document.getElementById(id).classList.toggle('collapsed');
 }
 
-// Sidebar toggle
 const sidebar = document.getElementById('sidebar');
 const handle = document.getElementById('sidebar-handle');
 handle.addEventListener('click', e => {
