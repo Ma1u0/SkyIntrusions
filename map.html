@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Bebas+Neue&family=Inter:wght@400;500&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&family=Bebas+Neue&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 html, body { margin:0; height:100%; }
@@ -118,19 +118,25 @@ html, body { margin:0; height:100%; }
 .legend-row { margin-bottom:6px; }
 .legend-row img { width:26px; vertical-align:middle; margin-right:6px; }
 
-/* Popup styling: slightly smaller, wider box, clean */
+/* === POPUPS: original Leaflet look === */
 .leaflet-popup-content-wrapper {
-    max-width: 220px; /* slightly wider */
-    padding: 6px 10px;
+  padding: 6px 8px; /* original padding */
+  max-width: 200px; /* slightly narrower */
 }
 
 .leaflet-popup-content {
-    font-family: 'JetBrains Mono', monospace;
-    font-size:13px;
-    line-height:1.4;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
-.leaflet-popup-content b { font-size:16px; }
+.leaflet-popup-content b {
+  font-size: 15px;
+}
+
+.leaflet-popup-tip {
+  background: white; /* classic pointer */
+}
 </style>
 </head>
 <body>
@@ -221,7 +227,7 @@ html, body { margin:0; height:100%; }
     <div class="legend-row"><img src="icons/fighter-plane.png"> Jet</div>
     <div class="legend-row"><img src="icons/balloon.png"> Balloon</div>
     <div class="legend-row"><img src="icons/soldier.png"> Ground Border Crossing</div>
-    <div class="legend-row">🔴 Actor confirmed to be Russian</div>
+    <div class="legend-row">🔴 lelelellele Actor confirmed to be Russian</div>
     <div class="legend-row">🟠 Actor suspected to be Russian</div>
     <div class="legend-row">🟡 Unknown actor</div>
     <div class="legend-row">🟢 Unverified incident</div>
@@ -233,7 +239,7 @@ html, body { margin:0; height:100%; }
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
-<!-- Map JS -->
+<!-- Your map.js -->
 <script src="map.js"></script>
 
 <script>
