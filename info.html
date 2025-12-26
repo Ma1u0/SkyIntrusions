@@ -22,8 +22,14 @@ body { font-family: 'Oswald', sans-serif; background: #f9f9f9; color: #222; }
   height: 100%;
   background: #fff;
   box-shadow: 2px 0 10px rgba(0,0,0,0.25);
-  padding: 20px;
+  transform: translateX(-250px); /* start closed */
+  transition: transform 0.3s ease;
+  z-index: 1000;
   font-family: 'Fjalla One', sans-serif;
+}
+
+#sidebar-content {
+  padding: 20px;
 }
 
 #sidebar a {
@@ -34,7 +40,7 @@ body { font-family: 'Oswald', sans-serif; background: #f9f9f9; color: #222; }
   font-size: 18px;
 }
 
-/* ===== Sidebar handle ===== */
+/* Sidebar handle */
 #sidebar-handle {
   position: fixed;
   top: 20px;
@@ -49,13 +55,15 @@ body { font-family: 'Oswald', sans-serif; background: #f9f9f9; color: #222; }
   box-shadow: 2px 0 6px rgba(0,0,0,0.3);
   cursor: pointer;
   font-size: 22px;
+  z-index: 1001;
   transition: transform 0.3s ease;
 }
 
 /* ===== Main Content ===== */
 #main-content {
-  margin-left: 270px;
+  margin-left: 20px; /* small gap when sidebar closed */
   padding: 40px 30px;
+  transition: margin-left 0.3s ease;
 }
 
 h1 {
@@ -94,10 +102,12 @@ footer {
 
 <!-- Sidebar -->
 <div id="sidebar">
-  <a href="index.html">🏠 Home</a>
-  <a href="map.html">🗺️ Map</a>
-  <a href="calendar.html">📅 Calendar</a>
-  <a href="info.html">ℹ️ Info</a>
+  <div id="sidebar-content">
+    <a href="index.html">🏠 Home</a>
+    <a href="map.html">🗺️ Map</a>
+    <a href="calendar.html">📅 Calendar</a>
+    <a href="info.html">ℹ️ Info</a>
+  </div>
 </div>
 <div id="sidebar-handle">&#9776;</div>
 
@@ -106,7 +116,7 @@ footer {
   <h1>Info</h1>
 
   <h2>What counts as an incident?</h2>
-  <p>An incident is defined as any event that involves an airspace or border violation, drone or balloon sightings near sensitive areas, or unusual military or reconnaissance activity. Only events verified by reliable sources are counted.</p>
+  <p>An incident is defined as any event involving airspace or border violations, drone or balloon sightings near sensitive areas, or unusual military or reconnaissance activity. Only events verified by reliable sources are counted.</p>
 
   <h2>Why not everything is updated</h2>
   <p>Not all events are immediately added to the calendar or map. Some reports take time to verify, some are low-risk and not considered notable, and some details may be confidential or unconfirmed. We prioritize accuracy over speed.</p>
@@ -117,19 +127,27 @@ footer {
 
 <!-- Footer -->
 <footer>
-  &copy; 2025 Incident Tracker • Built with ❤️
+  &copy; 2025 Incident Tracker
 </footer>
 
 <script>
 // Sidebar toggle
 const sidebar = document.getElementById('sidebar');
 const handle = document.getElementById('sidebar-handle');
-let sidebarOpen = true;
+const container = document.getElementById('main-content');
+let sidebarOpen = false;
 
 handle.addEventListener('click', () => {
   sidebarOpen = !sidebarOpen;
-  sidebar.style.transform = sidebarOpen ? 'translateX(0)' : 'translateX(-250px)';
-  handle.style.transform = sidebarOpen ? 'translateX(250px)' : 'translateX(0)';
+  if(sidebarOpen){
+    sidebar.style.transform = 'translateX(0)';
+    handle.style.transform = 'translateX(250px)';
+    container.style.marginLeft = '270px';
+  } else {
+    sidebar.style.transform = 'translateX(-250px)';
+    handle.style.transform = 'translateX(0)';
+    container.style.marginLeft = '20px';
+  }
 });
 </script>
 
