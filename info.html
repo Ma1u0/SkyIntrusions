@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Incident Tracker - Info</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald&display=swap" rel="stylesheet">
+
+<style>
+/* ===== Reset & Base ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Oswald', sans-serif; background: #f9f9f9; color: #222; }
+
+/* ===== Sidebar ===== */
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.25);
+  padding: 20px;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+#sidebar a {
+  display: block;
+  margin-bottom: 12px;
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* ===== Sidebar handle ===== */
+#sidebar-handle {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 32px;
+  height: 42px;
+  background: white;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+/* ===== Main Content ===== */
+#main-content {
+  margin-left: 270px;
+  padding: 40px 30px;
+}
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  color: #e03b3b;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: #e03b3b;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+  color: #777;
+  border-top: 1px solid #ccc;
+  margin-top: 50px;
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div id="sidebar">
+  <a href="index.html">🏠 Home</a>
+  <a href="map.html">🗺️ Map</a>
+  <a href="calendar.html">📅 Calendar</a>
+  <a href="info.html">ℹ️ Info</a>
+</div>
+<div id="sidebar-handle">&#9776;</div>
+
+<!-- Main Content -->
+<div id="main-content">
+  <h1>Info</h1>
+
+  <h2>What counts as an incident?</h2>
+  <p>An incident is defined as any event that involves an airspace or border violation, drone or balloon sightings near sensitive areas, or unusual military or reconnaissance activity. Only events verified by reliable sources are counted.</p>
+
+  <h2>Why not everything is updated</h2>
+  <p>Not all events are immediately added to the calendar or map. Some reports take time to verify, some are low-risk and not considered notable, and some details may be confidential or unconfirmed. We prioritize accuracy over speed.</p>
+
+  <h2>Data sources</h2>
+  <p>All incidents are based on publicly available sources, news outlets, and official military or civil reports. Links to source articles are provided when possible.</p>
+</div>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 Incident Tracker • Built with ❤️
+</footer>
+
+<script>
+// Sidebar toggle
+const sidebar = document.getElementById('sidebar');
+const handle = document.getElementById('sidebar-handle');
+let sidebarOpen = true;
+
+handle.addEventListener('click', () => {
+  sidebarOpen = !sidebarOpen;
+  sidebar.style.transform = sidebarOpen ? 'translateX(0)' : 'translateX(-250px)';
+  handle.style.transform = sidebarOpen ? 'translateX(250px)' : 'translateX(0)';
+});
+</script>
+
+</body>
+</html>
