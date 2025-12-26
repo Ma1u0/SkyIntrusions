@@ -83,10 +83,15 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* gap between buttons/dropdowns */
+  gap: 8px;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
-  flex-wrap: nowrap; /* keep everything in one row */
+}
+
+#calendar-header .month-year-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
 }
 
 #calendar-header select,
@@ -96,9 +101,6 @@ html, body {
   cursor: pointer;
 }
 
-/* =========================
-   CALENDAR GRID
-========================= */
 #calendar-grid {
   margin-top: 20px;
   display: grid;
@@ -213,21 +215,6 @@ html, body {
   font-style: italic;
   margin-top: 10px;
 }
-
-/* =========================
-   MOBILE ADJUSTMENTS
-========================= */
-@media (max-width: 500px) {
-  #calendar-header {
-    font-size: 18px;
-  }
-
-  #calendar-header select,
-  #calendar-header button {
-    font-size: 14px;
-    padding: 3px 6px;
-  }
-}
 </style>
 </head>
 
@@ -246,8 +233,10 @@ html, body {
   <div id="calendar">
     <div id="calendar-header">
       <button id="prevMonth">◀</button>
-      <select id="monthSelect"></select>
-      <select id="yearSelect"></select>
+      <div class="month-year-group">
+        <select id="monthSelect"></select>
+        <select id="yearSelect"></select>
+      </div>
       <button id="nextMonth">▶</button>
     </div>
     <div id="calendar-grid"></div>
@@ -299,7 +288,7 @@ function getIncidentTypes(incidents) {
 ========================= */
 const incidentsData = {
 
-   /* =========================
+ /* =========================
        S E P T E M B E R 
     ========================= */
   
