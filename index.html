@@ -8,6 +8,9 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald&display=swap" rel="stylesheet">
 
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
 /* ===== Reset & base ===== */
 * {
@@ -120,6 +123,45 @@ body {
   color: #555;
 }
 
+/* ===== Charts Section ===== */
+.charts-section {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.chart-container {
+  margin-top: 30px;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Chart toggle buttons */
+.chart-toggle {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.chart-toggle button {
+  padding: 8px 16px;
+  background: #e03b3b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Bebas Neue', sans-serif;
+  transition: 0.2s;
+}
+
+.chart-toggle button:hover {
+  background: #c70000;
+}
+
 /* ===== Footer ===== */
 footer {
   text-align: center;
@@ -127,9 +169,7 @@ footer {
   font-size: 14px;
   color: #777;
   border-top: 1px solid #ccc;
-  margin-top: 40px;
 }
-
 </style>
 </head>
 <body>
@@ -149,10 +189,10 @@ footer {
 <!-- This Month at a Glance -->
 <div class="this-month">
   <h2>December 2025</h2>
-  <p>Latest incidents:.</p>
-   <p>🇵🇱 Eastern Poland, Dec 24.</p>
-   <p>🇷🇴 Strâmtu Mountain, Dec 21.</p>
-   <p>🇹🇷 Izmit, 19 Dec.</p>
+  <p>Latest incidents:</p>
+  <p>🇵🇱 Eastern Poland, Dec 24.</p>
+  <p>🇷🇴 Strâmtu Mountain, Dec 21.</p>
+  <p>🇹🇷 Izmit, 19 Dec.</p>
 </div>
 
 <!-- Incident Counter -->
@@ -175,10 +215,69 @@ footer {
   </div>
 </div>
 
+<!-- Charts -->
+<div class="charts-section">
+  <h2>Incidents Over Time</h2>
+  <div class="chart-toggle">
+    <button onclick="updateChart('month')">Monthly</button>
+    <button onclick="updateChart('week')">Weekly</button>
+    <button onclick="updateChart('day')">Daily</button>
+  </div>
+  <div class="chart-container">
+    <canvas id="incidentsChart" height="250"></canvas>
+  </div>
+</div>
+
 <!-- Footer -->
 <footer>
   &copy; 2025 Incident Tracker • Built with ❤️
 </footer>
+
+<script>
+// Sample data for chart
+const chartData = {
+  month: {
+    labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    data: [5,8,12,6,4,7,10,8,9,11,12,15]
+  },
+  week: {
+    labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    data: [1,2,1,0,3,1,0]
+  },
+  day: {
+    labels: Array.from({length:24}, (_,i)=>i+":00"),
+    data: Array.from({length:24}, ()=>Math.floor(Math.random()*2))
+  }
+};
+
+// Initialize chart
+let ctx = document.getElementById('incidentsChart').getContext('2d');
+let incidentsChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: chartData.month.labels,
+    datasets: [{
+      label: 'Incidents',
+      data: chartData.month.data,
+      backgroundColor: '#e03b3b'
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, ticks: { precision:0 } }
+    }
+  }
+});
+
+// Update chart
+function updateChart(type){
+  incidentsChart.data.labels = chartData[type].labels;
+  incidentsChart.data.datasets[0].data = chartData[type].data;
+  incidentsChart.update();
+}
+</script>
 
 </body>
 </html>
