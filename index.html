@@ -44,6 +44,7 @@ body { font-family: 'Oswald', sans-serif; background: #f9f9f9; color: #222; }
   font-family: 'Bebas Neue', sans-serif;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   transition: 0.2s;
+  text-align: center;
 }
 .btn:hover { background: #c70000; transform: translateY(-3px); }
 
@@ -87,7 +88,6 @@ body { font-family: 'Oswald', sans-serif; background: #f9f9f9; color: #222; }
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-/* Chart toggle buttons */
 .chart-toggle {
   margin-top: 20px;
   display: flex;
@@ -102,83 +102,74 @@ body { font-family: 'Oswald', sans-serif; background: #f9f9f9; color: #222; }
   border-radius: 6px;
   cursor: pointer;
   font-family: 'Bebas Neue', sans-serif;
-  transition: 0.2s;
-}
-.chart-toggle button:hover { background: #c70000; }
-
-/* ===== Footer ===== */
-footer {
-  text-align: center;
-  padding: 25px;
-  font-size: 14px;
-  color: #777;
-  border-top: 1px solid #ccc;
 }
 
 /* ===== Mobile responsiveness ===== */
 @media screen and (max-width: 768px) {
 
-  /* Hero section */
   .hero {
     padding: 50px 15px 40px;
   }
   .hero h1 { font-size: 40px; }
   .hero p { font-size: 16px; }
 
-  /* Navigation buttons */
   .homepage-buttons {
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
     margin: 30px 0;
   }
+
   .btn {
-    width: 80%;
-    padding: 14px 20px;
-    font-size: 18px;
+    width: 70%;
+    margin: 0 auto;
+    padding: 12px 18px;
+    font-size: 17px;
+    text-align: center;
   }
 
-  /* Stats cards */
   .stats-container {
     flex-direction: column;
     align-items: center;
     gap: 15px;
     margin-bottom: 40px;
   }
+
   .stat-card {
-    min-width: 150px;
+    min-width: 160px;
     padding: 20px 15px;
   }
+
   .stat-card h2 { font-size: 32px; }
   .stat-card p { font-size: 16px; }
 
-  /* This Month Section */
   .this-month h2 { font-size: 28px; }
   .this-month p { font-size: 16px; }
 
-  /* Charts Section */
-  .charts-section { width: 95%; margin-bottom: 40px; }
-  .chart-container { padding: 15px; }
-  .chart-toggle button { padding: 6px 12px; font-size: 16px; }
+  .charts-section {
+    width: 95%;
+    margin-bottom: 40px;
+  }
 
+  .chart-container {
+    padding: 15px;
+  }
 }
 </style>
 </head>
+
 <body>
 
-<!-- Hero -->
 <div class="hero">
   <h1>Incident Tracker</h1>
   <p>Tracking of airspace and border violations, including detailed map and calendar overview</p>
 </div>
 
-<!-- Navigation -->
 <div class="homepage-buttons">
   <a href="map.html" class="btn">🗺️ View Map</a>
   <a href="calendar.html" class="btn">📅 View Calendar</a>
   <a href="info.html" class="btn">ℹ️ View Info</a>
 </div>
 
-<!-- This Month at a Glance -->
 <div class="this-month">
   <h2>December 2025</h2>
   <p>Latest incidents:</p>
@@ -187,7 +178,6 @@ footer {
   <p>🇹🇷 Izmit, 19 Dec.</p>
 </div>
 
-<!-- Incident Counter -->
 <div class="stats-container">
   <div class="stat-card">
     <h2>9</h2>
@@ -207,7 +197,6 @@ footer {
   </div>
 </div>
 
-<!-- Charts -->
 <div class="charts-section">
   <h2>Incidents Over Time</h2>
   <div class="chart-toggle">
@@ -220,20 +209,17 @@ footer {
 </div>
 
 <script>
-// Sample data for line chart
 const chartData = {
   month: { labels: ['Sep 25','Oct 25','Nov 25','Dec 25'], data: [22,19,41,12] },
   week: { labels: ['CW36','CW37','CW38','CW39','CW40','CW41','CW42','CW43','CW44','CW45','CW46','CW47','CW48','CW49','CW50','CW51','CW52'], data: [1,1,3,18,6,0,2,9,10,23,3,5,5,4,2,5,1] },
 };
 
-// Initialize line chart
 let ctx = document.getElementById('incidentsChart').getContext('2d');
 let incidentsChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: chartData.month.labels,
     datasets: [{
-      label: 'Incidents',
       data: chartData.month.data,
       borderColor: '#e03b3b',
       backgroundColor: 'rgba(224,59,59,0.2)',
@@ -245,12 +231,11 @@ let incidentsChart = new Chart(ctx, {
   options: {
     responsive: true,
     plugins: { legend: { display: false } },
-    scales: { y: { beginAtZero: true, ticks: { precision:0 } } }
+    scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
   }
 });
 
-// Update chart dynamically
-function updateChart(type){
+function updateChart(type) {
   incidentsChart.data.labels = chartData[type].labels;
   incidentsChart.data.datasets[0].data = chartData[type].data;
   incidentsChart.update();
