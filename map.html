@@ -30,50 +30,149 @@ html, body { margin:0; height:100%; }
 }
 #sidebar.sidebar-open { transform: translateX(0); }
 #sidebar-content { padding:20px; }
-#sidebar-content a { display:block; margin-bottom:12px; font-size:18px; color:#111; text-decoration:none; }
+#sidebar-content a {
+  display:block;
+  margin-bottom:12px;
+  font-size:18px;
+  color:#111;
+  text-decoration:none;
+}
 #sidebar-handle {
-  position:absolute; right:-30px; top:20px;
-  width:30px; height:40px; background:white;
+  position:absolute;
+  right:-30px;
+  top:20px;
+  width:30px;
+  height:40px;
+  background:white;
   border-radius:0 6px 6px 0;
-  display:flex; align-items:center; justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   box-shadow:2px 0 6px rgba(0,0,0,0.3);
-  cursor:pointer; font-size:22px; z-index:1002;
+  cursor:pointer;
+  font-size:22px;
+  z-index:1002;
 }
 
 /* Map */
-#map { position:absolute; top:0; left:0; right:0; bottom:0; z-index:0; }
+#map {
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  z-index:0;
+}
 
 /* Panels */
 .panel {
-  position:absolute; background:white; border-radius:6px; 
-  box-shadow:0 2px 10px rgba(0,0,0,0.3); z-index:1000;
+  position:absolute;
+  background:white;
+  border-radius:6px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.3);
+  z-index:1000;
 }
 .panel-header {
-  display:flex; justify-content:space-between; padding:8px;
-  font-weight:bold; background:#f0f0f0;
-  font-family:'Bebas Neue'; font-size:22px; letter-spacing:1px;
+  display:flex;
+  justify-content:space-between;
+  padding:8px;
+  font-weight:bold;
+  background:#f0f0f0;
+  font-family:'Bebas Neue';
+  font-size:22px;
+  letter-spacing:1px;
 }
-.panel button { background:none; border:none; font-size:16px; cursor:pointer; }
-.panel-content { padding:8px; font-family:'Inter'; font-size:14px; line-height:1.4; }
+.panel button {
+  background:none;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+}
+.panel-content {
+  padding:8px;
+  font-family:'Inter';
+  font-size:14px;
+  line-height:1.4;
+}
 .collapsed .panel-content { display:none; }
 
 /* Filters */
 #filters { bottom:10px; right:10px; width:780px; }
 #filters.collapsed { width:120px; height:40px; }
-#sentence-filters { display:flex; flex-wrap:wrap; gap:6px; align-items:center; font-size:14px; }
+#sentence-filters {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  align-items:center;
+  font-size:14px;
+}
 #sentence-filters select { padding:4px 6px; }
 
 /* Legend */
 #legend { top:10px; right:10px; width:300px; }
 #legend.collapsed { width:150px; height:40px; }
 .legend-row { margin-bottom:6px; }
-.legend-row img { width:26px; vertical-align:middle; margin-right:6px; }
+.legend-row img {
+  width:26px;
+  vertical-align:middle;
+  margin-right:6px;
+}
 
-/* POPUPS: KEEP DEFAULT LEAFLET SHAPE & WIDTH */
-.leaflet-popup-content { font-family:'Oswald', sans-serif; font-size:14px; line-height:1.4; }
+/* POPUPS — KEEP DEFAULT LEAFLET LOOK */
+.leaflet-popup-content {
+  font-family:'Oswald', sans-serif;
+  font-size:14px;
+  line-height:1.4;
+}
 .leaflet-popup-content b { font-size:16px; }
+
+/* =========================
+   MOBILE ONLY (ADD-ON)
+   ========================= */
+@media (max-width: 768px) {
+
+  /* Sidebar */
+  #sidebar {
+    width:220px;
+    transform: translateX(-220px);
+  }
+
+  #sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  #sidebar-content a {
+    font-size:16px;
+    margin-bottom:10px;
+  }
+
+  /* Panels fit screen */
+  #filters,
+  #legend {
+    width: calc(100% - 20px);
+    left:10px;
+    right:10px;
+  }
+
+  #filters {
+    bottom:10px;
+  }
+
+  #legend {
+    top:10px;
+  }
+
+  /* Filters tighter */
+  #sentence-filters {
+    font-size:13px;
+    gap:4px;
+  }
+
+  /* Popups stay same style, just slightly tighter */
+  .leaflet-popup-content {
+    font-size:13px;
+  }
+}
 </style>
 </head>
+
 <body>
 
 <!-- Sidebar -->
@@ -107,6 +206,7 @@ html, body { margin:0; height:100%; }
         <option value="green">unverified</option>
         <option value="blue">safety breaches</option>
       </select>
+
       <select id="f-type">
         <option value="any">all incidents</option>
         <option value="drone">drones</option>
@@ -114,6 +214,7 @@ html, body { margin:0; height:100%; }
         <option value="balloon">balloons</option>
         <option value="border">ground crossings</option>
       </select>
+
       <span>at</span>
       <select id="f-location">
         <option value="any">any place</option>
@@ -122,6 +223,7 @@ html, body { margin:0; height:100%; }
         <option value="infrastructure">infrastructure</option>
         <option value="others">other locations</option>
       </select>
+
       <span>in</span>
       <select id="f-month">
         <option value="any">any month</option>
@@ -138,6 +240,7 @@ html, body { margin:0; height:100%; }
         <option value="11">November</option>
         <option value="12">December</option>
       </select>
+
       <select id="f-year">
         <option value="any">any year</option>
         <option value="2025">2025</option>
@@ -170,11 +273,12 @@ html, body { margin:0; height:100%; }
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
-<!-- Map JS -->
 <script src="map.js"></script>
 
 <script>
-function togglePanel(id){ document.getElementById(id).classList.toggle('collapsed'); }
+function togglePanel(id){
+  document.getElementById(id).classList.toggle('collapsed');
+}
 const sidebar = document.getElementById('sidebar');
 const handle = document.getElementById('sidebar-handle');
 handle.addEventListener('click', e => {
