@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
   icon: icons.droneOrange,
   type: 'drone',        // used for filtering
   risk: 'orange',
-  place: 'airport',
+  place: 'airports',
   year: '2025',
   month: '11',
   country: "Ostend Airport, Belgium 🇧🇪",
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
   icon: icons.droneOrange,
   type: 'drone',        // used for filtering
   risk: 'orange',
-  place: 'airport',
+  place: 'airports',
   year: '2025',
   month: '11',
   country: "Antwerp Airport, Belgium 🇧🇪",
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
   icon: icons.droneOrange,
   type: 'drone',        // used for filtering
   risk: 'orange',
-  place: 'airport',
+  place: 'airports',
   year: '2025',
   month: '11',
   country: "Liège Airport, Belgium 🇧🇪",
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
   icon: icons.droneOrange,
   type: 'drone',        // used for filtering
   risk: 'orange',
-  place: 'airport',
+  place: 'airports',
   year: '2025',
   month: '11',
   country: "Brussels Airport, Belgium 🇧🇪",
@@ -478,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneOrange,
     type: 'drone',      // used for filtering
     risk: 'orange',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
     month: '09',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
   icon: icons.droneOrange,
   type: 'drone',        // used for filtering
   risk: 'orange',
-  place: 'airport',
+  place: 'airports',
   year: '2025',
   month: ['09', '11'],
   country: "Aalborg Airport, Denmark 🇩🇰",
@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneOrange,
     type: 'drone',      // used for filtering
     risk: 'orange',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
     month: '09',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneOrange,
     type: 'drone',      // used for filtering
     risk: 'orange',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '09',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -587,7 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneOrange,
     type: 'drone',      // used for filtering
     risk: 'orange',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '09',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -639,7 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneGreen,
     type: 'drone',      // used for filtering
     risk: 'green',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '09',
     popupType: 'Unverified Drone sighting / airport closure ', // shown in popup
@@ -657,7 +657,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneGreen,
     type: 'drone',      // used for filtering
     risk: 'green',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '09',
     popupType: 'Unverified Drone sighting ', // shown in popup
@@ -906,7 +906,7 @@ document.addEventListener('DOMContentLoaded', () => {
   icon: icons.droneYellow,
   type: 'drone',        // used for filtering
   risk: 'yellow',
-  place: 'airport',
+  place: 'airports',
   year: '2025',
    month: '10',
   country: "Munich Airport, Germany 🇩🇪",
@@ -969,7 +969,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
     month: '10',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -985,7 +985,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '11',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -1001,7 +1001,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '11',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -1055,7 +1055,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '12',
     popupType: 'Drone sighting ', // shown in popup
@@ -1075,7 +1075,7 @@ document.addEventListener('DOMContentLoaded', () => {
   icon: icons.balloonYellow,
   type: 'balloon',        // used for filtering
   risk: 'yellow',
-  place: 'airport',
+  place: 'airports',
   year: '2025',
   month: ['10', '11', '12'],  
   country: "Vilnius Airport, Lithuania 🇱🇹",
@@ -1174,7 +1174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.balloonYellow,
     type: 'balloon',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
     month: '10',
     popupType: 'Weather balloons / Smuggle balloons / Airport closure ', // shown in popup
@@ -1223,7 +1223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
     month: '11',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -1260,7 +1260,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
     month: '09',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -1276,7 +1276,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '09',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -1293,7 +1293,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '09',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -1796,7 +1796,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '10',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -1812,7 +1812,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
      month: '10',
     popupType: 'Drone sighting / airport closure ', // shown in popup
@@ -1863,7 +1863,7 @@ document.addEventListener('DOMContentLoaded', () => {
     icon: icons.droneYellow,
     type: 'drone',      // used for filtering
     risk: 'yellow',
-    place: 'airport',
+    place: 'airports',
     year: '2025',
     month: '11',
     popupType: ' Drone sighting / airport closure ', // shown in popup
